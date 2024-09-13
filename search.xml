@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Base64 Encoding</title>
+    <url>/c499c9c8.html</url>
+    <content><![CDATA[<h1 id="base64"><a class="markdownIt-Anchor" href="#base64"></a> Base64</h1>
+<p><a href="https://www.json.cn/document/base64"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111035330.webp"
+                      alt="image.png" 
+                ></a></p>
+<p>讲解一下它的编码过程。</p>
+<p>首先把字符转换成 ASCII 编码，然后把它的 ASCII 编码转换为八位二进制码，按顺序连接在一起，然后从最开始六个二进制码对应一个 0～63 的数字，对应到 Base64 编码表，每 3 个字符对应得到 4 个编码后的结果，某一个 6 位中不全则用 0 补齐，若 6 位都是空则对应编码为 <code>=</code>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047913.webp"
+                      alt="image.png" 
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047613.webp"
+                      alt="image.png" 
+                ></p>
+<p>ASCII (American Standard Information Interchange):</p>
+<p><a class="link"   href="https://www.json.cn/document/ascii/" >Link <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>encode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS Note</title>
     <url>/d51d3626.html</url>
     <content><![CDATA[<h1 id="basic"><a class="markdownIt-Anchor" href="#basic"></a> Basic</h1>
