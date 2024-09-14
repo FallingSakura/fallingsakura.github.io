@@ -950,6 +950,74 @@
       </tags>
   </entry>
   <entry>
+    <title>DataBase_Note</title>
+    <url>/2c7dde30.html</url>
+    <content><![CDATA[<p>数据库是一种组织、存储和管理数据的系统。它允许用户以结构化的方式存储和检索数据，通常通过数据库管理系统（DBMS）进行操作。</p>
+<h3 id="常见类型"><a class="markdownIt-Anchor" href="#常见类型"></a> 常见类型</h3>
+<ol>
+<li><strong>关系型数据库</strong>：如 MySQL、PostgreSQL、Oracle。使用<strong>表格</strong>来组织数据，通过 SQL 进行操作（这么说 Excel 也可以是一种数据库）。</li>
+<li><strong>非关系型数据库（NoSQL）</strong>：如 MongoDB、Cassandra。用于处理大规模和非结构化数据，灵活性更高。</li>
+<li><strong>内存数据库</strong>：如 Redis、Memcached。用于需要高速读写的数据，数据存储在内存中。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>关系型数据库（如MySQL）</th>
+<th>非关系型数据库（如MongoDB）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表/集合</td>
+<td>表（Table）</td>
+<td>集合（Collection）</td>
+</tr>
+<tr>
+<td>行/文档</td>
+<td>行（Row）</td>
+<td>文档（Document）</td>
+</tr>
+<tr>
+<td>列/字段</td>
+<td>列（Column）</td>
+<td>字段（Field）</td>
+</tr>
+<tr>
+<td>模式</td>
+<td>固定模式（Schema）</td>
+<td>无模式（Schema-less）</td>
+</tr>
+<tr>
+<td>关系</td>
+<td>支持复杂的表与表之间的关系</td>
+<td>不直接支持</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mongodb"><a class="markdownIt-Anchor" href="#mongodb"></a> MongoDB</h1>
+<p>那就从 MongoDB 开始学起，原因是之前配置 twikoo 的评论系统时误打误撞用到过，现在的一个新项目需要用到数据库。</p>
+<p>MongoDB 是一种文档型 NoSQL 数据库，主要有以下特点：</p>
+<ul>
+<li><strong>文档型存储</strong>：数据以文档的形式存储，文档是JSON格式的（MongoDB中称为BSON格式，二进制形式的JSON）。</li>
+<li><strong>无模式</strong>：与传统数据库不同，MongoDB中的文档不需要固定的表结构，可以灵活地存储不同结构的数据。</li>
+<li><strong>横向扩展</strong>：MongoDB可以很容易地通过增加更多的服务器节点来应对数据的增长，而不需要更强的硬件。</li>
+</ul>
+<p>可以下载 <a class="link"   href="https://www.mongodb.com/try/download/compass" >Compass <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 使用它的 GUI 界面。</p>
+<p>它的结构是，Cluster（集群）里有多个数据库，每个数据库是相同的，这样一个分布式结构保证它的安全稳定。</p>
+<p>Database（数据库）中有多个 Collection（集合），在集合中有多个 Document（文档），文档就是存储数据的地方，它的格式是 BSON（JSON 的二进制格式，便于存储），Field（字段）就是键，以及它有对应的值。</p>
+<h2 id="crud"><a class="markdownIt-Anchor" href="#crud"></a> CRUD</h2>
+<p>Create, Read, Update, Delete，四种数据库的基本操作。</p>
+<p><a class="link"   href="https://www.mongodb.com/zh-cn/docs/manual/crud/" >文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>Back-End</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Install &amp; Usage</title>
     <url>/4a7ef8fa.html</url>
     <content><![CDATA[<blockquote>
