@@ -1748,68 +1748,6 @@ a + b &amp; = 2 \\
       </tags>
   </entry>
   <entry>
-    <title>React Note</title>
-    <url>/f139e650.html</url>
-    <content><![CDATA[<blockquote>
-<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
-</blockquote>
-<h1 id="basis"><a class="markdownIt-Anchor" href="#basis"></a> Basis</h1>
-<p>先说一下基础概念。</p>
-<ul>
-<li><strong>组件化(Component)</strong>：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
-<li><strong>状态(State)</strong>：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
-<li><strong>属性(Props)</strong>：传递给组件的数据，相当于参数。</li>
-</ul>
-<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
-<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-<h1 id="state"><a class="markdownIt-Anchor" href="#state"></a> State</h1>
-<p>状态，也就是 Vue 中的响应式数据。</p>
-<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>可以有两个参数：</p>
-<ul>
-<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
-<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
-</ul>
-<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
-<h1 id="component"><a class="markdownIt-Anchor" href="#component"></a> Component</h1>
-<p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
-<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
-<h2 id="class"><a class="markdownIt-Anchor" href="#class"></a> Class</h2>
-<p>类组件。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
-<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
-<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
-<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
-<h2 id="function"><a class="markdownIt-Anchor" href="#function"></a> Function</h2>
-<p>函数组件。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>需要渲染什么直接 return 即可。</p>
-<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
-<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
-<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
-<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
-<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
-<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
-<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
-<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
-<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
-<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
-<h1 id="syntax"><a class="markdownIt-Anchor" href="#syntax"></a> Syntax</h1>
-<h2 id="style"><a class="markdownIt-Anchor" href="#style"></a> style</h2>
-<p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
-]]></content>
-      <categories>
-        <category>Front-End</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Regex Note</title>
     <url>/23441a96.html</url>
     <content><![CDATA[<blockquote>
@@ -1870,85 +1808,6 @@ a + b &amp; = 2 \\
       </categories>
       <tags>
         <tag>regex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TypeScript Note</title>
-    <url>/a4a6c774.html</url>
-    <content><![CDATA[<blockquote>
-<p>越来越像 c++ 了</p>
-</blockquote>
-<p>它是 JavaScript 的一个超集。</p>
-<p>经过编译后变成 JavaScript 才可以在浏览器中运行。</p>
-<h1 id="基础"><a class="markdownIt-Anchor" href="#基础"></a> 基础</h1>
-<h2 id="自动识别类型"><a class="markdownIt-Anchor" href="#自动识别类型"></a> 自动识别类型</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span></span><br><span class="line">num = <span class="string">&#x27;err&#x27;</span> <span class="comment">// error</span></span><br></pre></td></tr></table></figure></div>
-<p>变量一经赋值，它的类型也就确定下来了，直接修改会报错。</p>
-<h2 id="类型指定"><a class="markdownIt-Anchor" href="#类型指定"></a> 类型指定</h2>
-<p>定义时我们便可以定义它的类型。</p>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">num</span>: <span class="built_in">number</span></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">numArr</span>: <span class="built_in">number</span>[]</span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Arr</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt;</span><br><span class="line"><span class="comment">// equal</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="类型断言"><a class="markdownIt-Anchor" href="#类型断言"></a> 类型断言</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> numArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> result = numArr.<span class="title function_">find</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">2</span>) <span class="keyword">as</span> <span class="built_in">number</span></span><br><span class="line">result * <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
-<p>如果不加断言 <code>as number</code> 会导致错误，因为可能返回的值是 <code>undefined</code>，而 <code>undefined</code> 是不能进行数学运算的，如果我们确定它的值类型一定，便可以添加断言，这样就不会导致报错。</p>
-<p>在 JavaScript  中，<code>undefined</code> 则会被当作 <code>NaN</code> 进行数学运算。</p>
-<h2 id="基础类型"><a class="markdownIt-Anchor" href="#基础类型"></a> 基础类型</h2>
-<ul>
-<li>string</li>
-<li>number</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined</li>
-<li>void
-<ul>
-<li>值只有<code>undefined</code>，函数的类型</li>
-</ul>
-</li>
-</ul>
-<h2 id="联合类型"><a class="markdownIt-Anchor" href="#联合类型"></a> 联合类型</h2>
-<p>如果一个值可能有多个类型，定义时使用 <code>|</code> 隔开即可。</p>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">v</span>: <span class="built_in">string</span> | <span class="literal">null</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure></div>
-<p><code>null</code> 值默认可以分配给任意类型，开启严格配置后，只可以分配给 <code>null</code> 类型，所以需要通过这种方式声明一下。</p>
-<p>也可以用它来限制取值，如：</p>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">v</span>: <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
-<p>这样它就只能取这三个值。</p>
-<h2 id="元组"><a class="markdownIt-Anchor" href="#元组"></a> 元组</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">t</span>: [<span class="built_in">number</span>, <span class="built_in">string</span>, <span class="built_in">number</span>?] = [<span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure></div>
-<p>类似于数组，预定类型。</p>
-<p>如果该值可选，加个问号即可。</p>
-<h2 id="枚举类型"><a class="markdownIt-Anchor" href="#枚举类型"></a> 枚举类型</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">My</span> &#123;</span><br><span class="line">	A,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">My</span>.<span class="property">A</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">My</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure></div>
-<h2 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Obj</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">Obj</span> = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="类型别名"><a class="markdownIt-Anchor" href="#类型别名"></a> 类型别名</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Mytype</span> = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: <span class="title class_">Mytype</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="泛型函数"><a class="markdownIt-Anchor" href="#泛型函数"></a> 泛型函数</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> fn&lt;T&gt;(<span class="attr">a</span>: T, <span class="attr">b</span>: T): T[] &#123;</span><br><span class="line">	<span class="keyword">return</span> [a, b]</span><br><span class="line">&#125;</span><br><span class="line">fn&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-<h1 id="进阶"><a class="markdownIt-Anchor" href="#进阶"></a> 进阶</h1>
-<h2 id="函数重载"><a class="markdownIt-Anchor" href="#函数重载"></a> 函数重载</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span> (<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span> (<span class="attr">age</span>: <span class="built_in">number</span>): <span class="built_in">string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">helllo</span>(<span class="params">value: <span class="built_in">string</span> | <span class="built_in">number</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&#x27;a&#x27;</span> + value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>其实只保留最后一行函数定义也没问题，这样的好处是 vsc 会提示你函数结构。</p>
-<h2 id="接口继承"><a class="markdownIt-Anchor" href="#接口继承"></a> 接口继承</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">	<span class="attr">prop1</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">prop2</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">	<span class="attr">prop3</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="类构造函数"><a class="markdownIt-Anchor" href="#类构造函数"></a> 类构造函数</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span> &#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">content</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="title function_">constructor</span> (<span class="attr">title</span>: <span class="built_in">string</span>, <span class="attr">content</span>: <span class="built_in">string</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">title</span> = title</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">content</span> = content</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="存取器"><a class="markdownIt-Anchor" href="#存取器"></a> 存取器</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="attr">_password</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">password</span>(): <span class="built_in">string</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;*******&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">set</span> <span class="title function_">password</span>(<span class="params">newPass: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">_password</span> = newPass</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> u = <span class="keyword">new</span> <span class="title class_">User</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(u.<span class="property">password</span>)</span><br><span class="line">u.<span class="property">password</span> = <span class="string">&quot;123456&quot;</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类</h2>
-<p>可能不会被实例化，只是作为基类给其它类规范格式的。</p>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="keyword">abstract</span> <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">abstract</span> <span class="attr">color</span>: <span class="built_in">string</span></span><br><span class="line">	haha?: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;cat&#x27;</span></span><br><span class="line">	<span class="attr">color</span>: <span class="string">&#x27;orange&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>抽象类中可以有抽象属性，这样被子类继承时子类必须实现抽象属性，而非抽象属性子类可以正常继承使用。</p>
-<h2 id="接口实现"><a class="markdownIt-Anchor" href="#接口实现"></a> 接口实现</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">sound</span>(): <span class="built_in">string</span></span><br><span class="line">	<span class="title function_">makeSound</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span> =<span class="string">&#x27;dog&#x27;</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">sound</span>() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27; &#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">makeSound</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>可以继承多个接口，逗号隔开即可，但不能继承多个类。</p>
-<h2 id="泛型类"><a class="markdownIt-Anchor" href="#泛型类"></a> 泛型类</h2>
-<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&lt;T&gt; &#123;</span><br><span class="line">	<span class="attr">value</span>: T</span><br><span class="line">	<span class="title function_">constructor</span> (<span class="attr">value</span>: T) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">do</span> (<span class="attr">input</span>: T): T &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">value</span>)</span><br><span class="line">		<span class="keyword">return</span> input</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">My</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-<p>与泛型函数类似。</p>
-]]></content>
-      <categories>
-        <category>Front-End</category>
-      </categories>
-      <tags>
-        <tag>typescript</tag>
       </tags>
   </entry>
   <entry>
@@ -2823,6 +2682,147 @@ a + b &amp; = 2 \\
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript Note</title>
+    <url>/a4a6c774.html</url>
+    <content><![CDATA[<blockquote>
+<p>越来越像 c++ 了</p>
+</blockquote>
+<p>它是 JavaScript 的一个超集。</p>
+<p>经过编译后变成 JavaScript 才可以在浏览器中运行。</p>
+<h1 id="基础"><a class="markdownIt-Anchor" href="#基础"></a> 基础</h1>
+<h2 id="自动识别类型"><a class="markdownIt-Anchor" href="#自动识别类型"></a> 自动识别类型</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span></span><br><span class="line">num = <span class="string">&#x27;err&#x27;</span> <span class="comment">// error</span></span><br></pre></td></tr></table></figure></div>
+<p>变量一经赋值，它的类型也就确定下来了，直接修改会报错。</p>
+<h2 id="类型指定"><a class="markdownIt-Anchor" href="#类型指定"></a> 类型指定</h2>
+<p>定义时我们便可以定义它的类型。</p>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">num</span>: <span class="built_in">number</span></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">numArr</span>: <span class="built_in">number</span>[]</span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Arr</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt;</span><br><span class="line"><span class="comment">// equal</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="类型断言"><a class="markdownIt-Anchor" href="#类型断言"></a> 类型断言</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> numArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> result = numArr.<span class="title function_">find</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">2</span>) <span class="keyword">as</span> <span class="built_in">number</span></span><br><span class="line">result * <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+<p>如果不加断言 <code>as number</code> 会导致错误，因为可能返回的值是 <code>undefined</code>，而 <code>undefined</code> 是不能进行数学运算的，如果我们确定它的值类型一定，便可以添加断言，这样就不会导致报错。</p>
+<p>在 JavaScript  中，<code>undefined</code> 则会被当作 <code>NaN</code> 进行数学运算。</p>
+<h2 id="基础类型"><a class="markdownIt-Anchor" href="#基础类型"></a> 基础类型</h2>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>void
+<ul>
+<li>值只有<code>undefined</code>，函数的类型</li>
+</ul>
+</li>
+</ul>
+<h2 id="联合类型"><a class="markdownIt-Anchor" href="#联合类型"></a> 联合类型</h2>
+<p>如果一个值可能有多个类型，定义时使用 <code>|</code> 隔开即可。</p>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">v</span>: <span class="built_in">string</span> | <span class="literal">null</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure></div>
+<p><code>null</code> 值默认可以分配给任意类型，开启严格配置后，只可以分配给 <code>null</code> 类型，所以需要通过这种方式声明一下。</p>
+<p>也可以用它来限制取值，如：</p>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">v</span>: <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+<p>这样它就只能取这三个值。</p>
+<h2 id="元组"><a class="markdownIt-Anchor" href="#元组"></a> 元组</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">t</span>: [<span class="built_in">number</span>, <span class="built_in">string</span>, <span class="built_in">number</span>?] = [<span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure></div>
+<p>类似于数组，预定类型。</p>
+<p>如果该值可选，加个问号即可。</p>
+<h2 id="枚举类型"><a class="markdownIt-Anchor" href="#枚举类型"></a> 枚举类型</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">My</span> &#123;</span><br><span class="line">	A,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">My</span>.<span class="property">A</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">My</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure></div>
+<h2 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Obj</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">Obj</span> = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="类型别名"><a class="markdownIt-Anchor" href="#类型别名"></a> 类型别名</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Mytype</span> = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: <span class="title class_">Mytype</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="泛型函数"><a class="markdownIt-Anchor" href="#泛型函数"></a> 泛型函数</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> fn&lt;T&gt;(<span class="attr">a</span>: T, <span class="attr">b</span>: T): T[] &#123;</span><br><span class="line">	<span class="keyword">return</span> [a, b]</span><br><span class="line">&#125;</span><br><span class="line">fn&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+<h1 id="进阶"><a class="markdownIt-Anchor" href="#进阶"></a> 进阶</h1>
+<h2 id="函数重载"><a class="markdownIt-Anchor" href="#函数重载"></a> 函数重载</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span> (<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span> (<span class="attr">age</span>: <span class="built_in">number</span>): <span class="built_in">string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">helllo</span>(<span class="params">value: <span class="built_in">string</span> | <span class="built_in">number</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&#x27;a&#x27;</span> + value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>其实只保留最后一行函数定义也没问题，这样的好处是 vsc 会提示你函数结构。</p>
+<h2 id="接口继承"><a class="markdownIt-Anchor" href="#接口继承"></a> 接口继承</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">	<span class="attr">prop1</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">prop2</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">	<span class="attr">prop3</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="类构造函数"><a class="markdownIt-Anchor" href="#类构造函数"></a> 类构造函数</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span> &#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="attr">content</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="title function_">constructor</span> (<span class="attr">title</span>: <span class="built_in">string</span>, <span class="attr">content</span>: <span class="built_in">string</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">title</span> = title</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">content</span> = content</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="存取器"><a class="markdownIt-Anchor" href="#存取器"></a> 存取器</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="attr">_password</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">password</span>(): <span class="built_in">string</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;*******&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">set</span> <span class="title function_">password</span>(<span class="params">newPass: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">_password</span> = newPass</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> u = <span class="keyword">new</span> <span class="title class_">User</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(u.<span class="property">password</span>)</span><br><span class="line">u.<span class="property">password</span> = <span class="string">&quot;123456&quot;</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类</h2>
+<p>可能不会被实例化，只是作为基类给其它类规范格式的。</p>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="keyword">abstract</span> <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">abstract</span> <span class="attr">color</span>: <span class="built_in">string</span></span><br><span class="line">	haha?: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;cat&#x27;</span></span><br><span class="line">	<span class="attr">color</span>: <span class="string">&#x27;orange&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>抽象类中可以有抽象属性，这样被子类继承时子类必须实现抽象属性，而非抽象属性子类可以正常继承使用。</p>
+<h2 id="接口实现"><a class="markdownIt-Anchor" href="#接口实现"></a> 接口实现</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">sound</span>(): <span class="built_in">string</span></span><br><span class="line">	<span class="title function_">makeSound</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span> =<span class="string">&#x27;dog&#x27;</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">sound</span>() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27; &#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">makeSound</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以继承多个接口，逗号隔开即可，但不能继承多个类。</p>
+<h2 id="泛型类"><a class="markdownIt-Anchor" href="#泛型类"></a> 泛型类</h2>
+<div class="highlight-container" data-rel="Ts"><figure class="iseeu highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&lt;T&gt; &#123;</span><br><span class="line">	<span class="attr">value</span>: T</span><br><span class="line">	<span class="title function_">constructor</span> (<span class="attr">value</span>: T) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">do</span> (<span class="attr">input</span>: T): T &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">value</span>)</span><br><span class="line">		<span class="keyword">return</span> input</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">My</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+<p>与泛型函数类似。</p>
+]]></content>
+      <categories>
+        <category>Front-End</category>
+      </categories>
+      <tags>
+        <tag>typescript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React Note</title>
+    <url>/f139e650.html</url>
+    <content><![CDATA[<blockquote>
+<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
+</blockquote>
+<h1 id="basis"><a class="markdownIt-Anchor" href="#basis"></a> Basis</h1>
+<p>先说一下基础概念。</p>
+<ul>
+<li><strong>组件化(Component)</strong>：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
+<li><strong>状态(State)</strong>：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
+<li><strong>属性(Props)</strong>：传递给组件的数据，相当于参数。</li>
+</ul>
+<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="state"><a class="markdownIt-Anchor" href="#state"></a> State</h1>
+<p>状态，也就是 Vue 中的响应式数据。</p>
+<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以有两个参数：</p>
+<ul>
+<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
+<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
+</ul>
+<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
+<h1 id="component"><a class="markdownIt-Anchor" href="#component"></a> Component</h1>
+<p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
+<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
+<h2 id="class"><a class="markdownIt-Anchor" href="#class"></a> Class</h2>
+<p>类组件。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
+<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
+<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
+<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
+<h2 id="function"><a class="markdownIt-Anchor" href="#function"></a> Function</h2>
+<p>函数组件。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>需要渲染什么直接 return 即可。</p>
+<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
+<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
+<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
+<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
+<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
+<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
+<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
+<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
+<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
+<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
+<h1 id="syntax"><a class="markdownIt-Anchor" href="#syntax"></a> Syntax</h1>
+<h2 id="style"><a class="markdownIt-Anchor" href="#style"></a> style</h2>
+<p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
+]]></content>
+      <categories>
+        <category>Front-End</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
       </tags>
   </entry>
 </search>
