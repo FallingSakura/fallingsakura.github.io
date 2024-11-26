@@ -1293,6 +1293,67 @@ title P
       </tags>
   </entry>
   <entry>
+    <title>React Note</title>
+    <url>/f139e650.html</url>
+    <content><![CDATA[<blockquote>
+<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
+</blockquote>
+<h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><p>先说一下基础概念。</p>
+<ul>
+<li>**组件化(Component)**：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
+<li>**状态(State)**：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
+<li>**属性(Props)**：传递给组件的数据，相当于参数。</li>
+</ul>
+<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><p>状态，也就是 Vue 中的响应式数据。</p>
+<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以有两个参数：</p>
+<ul>
+<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
+<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
+</ul>
+<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
+<h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>类组件。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
+<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
+<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
+<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数组件。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要渲染什么直接 return 即可。</p>
+<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
+
+<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
+<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
+<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
+<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
+<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
+<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
+<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
+<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
+<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
+<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h1><h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
+]]></content>
+      <categories>
+        <category>Front-End</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript Note</title>
     <url>/fbbf86b6.html</url>
     <content><![CDATA[
@@ -1630,67 +1691,6 @@ title P
       </categories>
       <tags>
         <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React Note</title>
-    <url>/f139e650.html</url>
-    <content><![CDATA[<blockquote>
-<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
-</blockquote>
-<h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><p>先说一下基础概念。</p>
-<ul>
-<li>**组件化(Component)**：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
-<li>**状态(State)**：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
-<li>**属性(Props)**：传递给组件的数据，相当于参数。</li>
-</ul>
-<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
-<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><p>状态，也就是 Vue 中的响应式数据。</p>
-<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>可以有两个参数：</p>
-<ul>
-<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
-<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
-</ul>
-<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
-<h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
-
-<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
-<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>类组件。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
-<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
-<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
-<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数组件。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要渲染什么直接 return 即可。</p>
-<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
-
-<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
-<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
-<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
-<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
-<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
-<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
-<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
-<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
-<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
-<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h1><h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
-]]></content>
-      <categories>
-        <category>Front-End</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
       </tags>
   </entry>
   <entry>
