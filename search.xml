@@ -1,36 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Base64 Encoding</title>
-    <url>/c499c9c8.html</url>
-    <content><![CDATA[<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p><a href="https://www.json.cn/document/base64"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111035330.webp"
-                      alt="image.png"
-                ></a></p>
-<p>讲解一下它的编码过程。</p>
-<p>首先把字符转换成 ASCII 编码，然后把它的 ASCII 编码转换为八位二进制码，按顺序连接在一起，然后从最开始六个二进制码对应一个 0～63 的数字，对应到 Base64 编码表，每 3 个字符对应得到 4 个编码后的结果，某一个 6 位中不全则用 0 补齐，若 6 位都是空则对应编码为 <code>=</code>。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047913.webp"
-                      alt="image.png"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047613.webp"
-                      alt="image.png"
-                ></p>
-<p>ASCII (American Standard Information Interchange):</p>
-<p><a class="link"   href="https://www.json.cn/document/ascii/" >Link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+    <title>C/C++/C# Note</title>
+    <url>/edeb27c6.html</url>
+    <content><![CDATA[<blockquote>
+<p>三种语言的相似之处有很多，先后学了 <code>c++</code> <code>c</code> <code>c#</code>，把一些之前不知道的东西记录一下，写过很多遍的就不整理了。</p>
+</blockquote>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><blockquote>
+<p>c++&#x2F;c#</p>
+</blockquote>
+<p>枚举 <code>enum</code> 是一种用户定义的类型，它由一组命名的整数常量组成。枚举类型的主要目的是提高代码的可读性和可维护性，特别是在处理一组相关的常量时。</p>
+<p><strong>示例</strong></p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">eDirection</span> &#123; STOP = <span class="number">0</span>, LEFT, RIGHT, UP, DOWN &#125;;</span><br><span class="line">eDirection dir;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里就定义了一个枚举类型 <code>eDirection</code>，和这个类型的一个变量 <code>dir</code>，它只可以取其中这些常量的值。</p>
+<p>里面的值可以设定，默认是递增的。</p>
+<p>访问即 <code>dir.LEFT</code>，这样可以使代码更直观</p>
+<h1 id="库"><a href="#库" class="headerlink" title="库"></a>库</h1><h2 id="conio-h"><a href="#conio-h" class="headerlink" title="conio.h"></a>conio.h</h2><blockquote>
+<p>c++</p>
+</blockquote>
+<p><strong><code>_kbhit()</code></strong></p>
+<p>如果有键盘输入，则返回 1.</p>
+<p>否则返回 0.</p>
+<p>它是非阻塞的，这点与 <code>_getch()</code> 不同。</p>
+<p><strong><code>_getch()</code></strong></p>
+<p>从控制台中读取单个字符，不需要回车键。</p>
+<p>且读取的字符不会在控制台中显示。</p>
+<h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><blockquote>
+<p>c#</p>
+</blockquote>
+<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><p>关键字 <code>static</code>。</p>
+<p>每一个 <code>class</code> 都有它的变量、函数等。</p>
+<p><strong>对象</strong>是<strong>类</strong>的<strong>实例</strong>。</p>
+<p>如果是 <code>static</code> 类型的变量，那么无需为这个 <code>class</code> 实例化（即创建一个对象）便可以修改它的值。</p>
+<p>示例：</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Myclass</span> &#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="built_in">int</span> staticNum;</span><br><span class="line">	<span class="built_in">int</span> num;</span><br><span class="line">&#125;</span><br><span class="line">Myclass myclass = <span class="keyword">new</span> Myclass();</span><br><span class="line">myclass.num = <span class="number">6</span>;</span><br><span class="line">Myclass.staticNum = <span class="number">6</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><ul>
+<li><code>public</code></li>
+</ul>
+<p>修饰类时，代表它可以被任何文件的任何代码访问。</p>
+<p>修饰成员时，表示这个对象可以在任何位置被访问。</p>
+<ul>
+<li><code>private</code></li>
+</ul>
+<p>只能修饰成员，表示这个变量只可以在对象内部被访问。</p>
+<ul>
+<li><code>internal</code></li>
+</ul>
+<p>类或成员只能被一个程序集中的代码访问，类的默认修饰符。</p>
+<ul>
+<li><code>protected</code></li>
+</ul>
+<p>子类可以访问，而外部不可访问。</p>
+<h2 id="Class-与-Struct"><a href="#Class-与-Struct" class="headerlink" title="Class 与 Struct"></a>Class 与 Struct</h2><p>它们的区别在何处？</p>
+<p><code>class</code> 变量储存的是地址，而 <code>sruct</code> 变量储存的是值。</p>
+<p>也就是说，如果将一个 <code>class</code> 赋值给另一个 <code>class</code>，那么这两个 <code>class</code> 所指向的是相同的变量。</p>
+<p>而如果把一个 <code>struct</code> 赋值给另一个 <code>struct</code>，那么这两个 <code>struct</code> 是两个值相同的不同的变量。</p>
+<p>同样，当 <code>class</code> 作为形参传入一个函数时，它的值会受到函数内修改的影响，因为访问的都是同一个地址。</p>
+<p>而 <code>struct</code> 作为值只是复制了一份传入函数，函数内修改的是复制体，并不会影响到外面的值。</p>
+<p>对 <code>struct</code> 使用 <code>ref</code> 关键字，即取地址，即可实现和 <code>class</code> 一样的效果。</p>
+<hr>
+<p><code>struct</code> 不能继承 <code>struct</code> 或者 <code>class</code>，无法被继承，只能继承接口。</p>
+<p><code>class</code> 可以继承一个父类，也可以继承接口。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><code>public class A : B</code> 表示类 A 继承类B，A 是子类，B 是父类，子类可以使用父类中的变量。</p>
+<p>而如果子类中某个函数不想使用父类中的函数，可以采用 <code>override</code> 关键字重新定义这个函数。</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">fn</span>()</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>同时需要在父类的这个函数中添加 <code>virtual</code> 关键字表示这个函数允许被重写。</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fn</span>()</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要注意，父类变量可以存储子类变量的值，但子类变量不可以存储父类变量的值。</p>
+<p>所有类型的基类是 <code>object</code>。</p>
+<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><p>在类前加上此关键字可以在各个文件中写这个类，并且它们最终会合并在一起。</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">p</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>在类前加上 <code>interface</code> 便可以作为一个接口。</p>
+<p>接口内定义若干方法，而不定义它们的实现，且不能添加访问修饰符，默认 <code>public</code>。</p>
+<p>接口只提供声明，不提供实现。</p>
+<p>所以继承接口后需要给出它相应的实现。</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>添加 <code>abstract</code> 的类无法被实例化，并且可以暂时不实现接口。</p>
+<p><code>abstract</code> 也可以修饰函数，只声明不实现，留给子类实现。</p>
+<p>抽象类中可以实现接口。</p>
+<p>类只能继承一个抽象类。</p>
+<p>抽象类也可以自己声明函数、属性并实现。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GV</span>&lt;<span class="title">T</span>&gt; &#123;</span><br><span class="line">	<span class="keyword">public</span> T x;</span><br><span class="line">	<span class="keyword">public</span> T y;</span><br><span class="line">&#125;</span><br><span class="line">GV&lt;<span class="built_in">int</span>&gt; giv = <span class="keyword">new</span> GV&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure></div>
+
+<p>这样就可以实现同一份代码的不同类型。</p>
+<p>泛型方法：</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span>&lt;<span class="title">T</span>&gt;(<span class="params">T a, T b</span>) <span class="keyword">where</span> T : Actor</span>&#123;</span><br><span class="line">	a.Attack();</span><br><span class="line">	b.Attack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要说明这个泛型继承自哪个类，否则默认就是 <code>object</code>。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>使用 <code>delegate</code> 声明一个类型，它可以储存多个相同形式的函数并依次执行，通过 <code>+=</code> 和 <code>-=</code> 控制里面的函数。</p>
+<p>包括这个函数的类型，形参等。</p>
+<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">delegate</span> <span class="built_in">float</span> <span class="title">CalcFn</span>(<span class="params"><span class="built_in">float</span> v1, <span class="built_in">float</span> v2</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">float</span> <span class="title">Add</span>(<span class="params"><span class="built_in">float</span> a, <span class="built_in">float</span> b</span>)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">float</span> <span class="title">Mul</span>(<span class="params"><span class="built_in">float</span> a, <span class="built_in">float</span> b</span>)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CalcFn p = Add;</span><br><span class="line">p(<span class="number">1f</span>, <span class="number">2f</span>);</span><br><span class="line">p += Mul;</span><br><span class="line">p(<span class="number">1f</span>, <span class="number">2f</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>相当于一个函数集合。</p>
+<p><code>Func&lt;T1, T2, TResult&gt;</code> 表示一个委托类型，前面几个是输入参数的类型，最后一个是返回值的类型。</p>
+<p><code>Action&lt;T1, T2&gt;</code> 是无返回值</p>
 ]]></content>
       <categories>
-        <category>Tool</category>
+        <category>Back-End</category>
       </categories>
       <tags>
-        <tag>encode</tag>
+        <tag>c season</tag>
       </tags>
   </entry>
   <entry>
@@ -507,109 +580,66 @@
       </tags>
   </entry>
   <entry>
-    <title>C/C++/C# Note</title>
-    <url>/edeb27c6.html</url>
-    <content><![CDATA[<blockquote>
-<p>三种语言的相似之处有很多，先后学了 <code>c++</code> <code>c</code> <code>c#</code>，把一些之前不知道的东西记录一下，写过很多遍的就不整理了。</p>
-</blockquote>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><blockquote>
-<p>c++&#x2F;c#</p>
-</blockquote>
-<p>枚举 <code>enum</code> 是一种用户定义的类型，它由一组命名的整数常量组成。枚举类型的主要目的是提高代码的可读性和可维护性，特别是在处理一组相关的常量时。</p>
-<p><strong>示例</strong></p>
-<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">eDirection</span> &#123; STOP = <span class="number">0</span>, LEFT, RIGHT, UP, DOWN &#125;;</span><br><span class="line">eDirection dir;</span><br></pre></td></tr></table></figure></div>
-
-<p>这里就定义了一个枚举类型 <code>eDirection</code>，和这个类型的一个变量 <code>dir</code>，它只可以取其中这些常量的值。</p>
-<p>里面的值可以设定，默认是递增的。</p>
-<p>访问即 <code>dir.LEFT</code>，这样可以使代码更直观</p>
-<h1 id="库"><a href="#库" class="headerlink" title="库"></a>库</h1><h2 id="conio-h"><a href="#conio-h" class="headerlink" title="conio.h"></a>conio.h</h2><blockquote>
-<p>c++</p>
-</blockquote>
-<p><strong><code>_kbhit()</code></strong></p>
-<p>如果有键盘输入，则返回 1.</p>
-<p>否则返回 0.</p>
-<p>它是非阻塞的，这点与 <code>_getch()</code> 不同。</p>
-<p><strong><code>_getch()</code></strong></p>
-<p>从控制台中读取单个字符，不需要回车键。</p>
-<p>且读取的字符不会在控制台中显示。</p>
-<h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><blockquote>
-<p>c#</p>
-</blockquote>
-<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><p>关键字 <code>static</code>。</p>
-<p>每一个 <code>class</code> 都有它的变量、函数等。</p>
-<p><strong>对象</strong>是<strong>类</strong>的<strong>实例</strong>。</p>
-<p>如果是 <code>static</code> 类型的变量，那么无需为这个 <code>class</code> 实例化（即创建一个对象）便可以修改它的值。</p>
-<p>示例：</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Myclass</span> &#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="built_in">int</span> staticNum;</span><br><span class="line">	<span class="built_in">int</span> num;</span><br><span class="line">&#125;</span><br><span class="line">Myclass myclass = <span class="keyword">new</span> Myclass();</span><br><span class="line">myclass.num = <span class="number">6</span>;</span><br><span class="line">Myclass.staticNum = <span class="number">6</span>;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><ul>
-<li><code>public</code></li>
-</ul>
-<p>修饰类时，代表它可以被任何文件的任何代码访问。</p>
-<p>修饰成员时，表示这个对象可以在任何位置被访问。</p>
+    <title>DataBase_Note</title>
+    <url>/2c7dde30.html</url>
+    <content><![CDATA[<p>数据库是一种组织、存储和管理数据的系统。它允许用户以结构化的方式存储和检索数据，通常通过数据库管理系统（DBMS）进行操作。</p>
+<h3 id="常见类型"><a href="#常见类型" class="headerlink" title="常见类型"></a>常见类型</h3><ol>
+<li><strong>关系型数据库</strong>：如 MySQL、PostgreSQL、Oracle。使用<strong>表格</strong>来组织数据，通过 SQL 进行操作（这么说 Excel 也可以是一种数据库）。</li>
+<li><strong>非关系型数据库（NoSQL）</strong>：如 MongoDB、Cassandra。用于处理大规模和非结构化数据，灵活性更高。</li>
+<li><strong>内存数据库</strong>：如 Redis、Memcached。用于需要高速读写的数据，数据存储在内存中。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>关系型数据库（如MySQL）</th>
+<th>非关系型数据库（如MongoDB）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表&#x2F;集合</td>
+<td>表（Table）</td>
+<td>集合（Collection）</td>
+</tr>
+<tr>
+<td>行&#x2F;文档</td>
+<td>行（Row）</td>
+<td>文档（Document）</td>
+</tr>
+<tr>
+<td>列&#x2F;字段</td>
+<td>列（Column）</td>
+<td>字段（Field）</td>
+</tr>
+<tr>
+<td>模式</td>
+<td>固定模式（Schema）</td>
+<td>无模式（Schema-less）</td>
+</tr>
+<tr>
+<td>关系</td>
+<td>支持复杂的表与表之间的关系</td>
+<td>不直接支持</td>
+</tr>
+</tbody></table>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><p>那就从 MongoDB 开始学起，原因是之前配置 twikoo 的评论系统时误打误撞用到过，现在的一个新项目需要用到数据库。</p>
+<p>MongoDB 是一种文档型 NoSQL 数据库，主要有以下特点：</p>
 <ul>
-<li><code>private</code></li>
+<li><strong>文档型存储</strong>：数据以文档的形式存储，文档是JSON格式的（MongoDB中称为BSON格式，二进制形式的JSON）。</li>
+<li><strong>无模式</strong>：与传统数据库不同，MongoDB中的文档不需要固定的表结构，可以灵活地存储不同结构的数据。</li>
+<li><strong>横向扩展</strong>：MongoDB可以很容易地通过增加更多的服务器节点来应对数据的增长，而不需要更强的硬件。</li>
 </ul>
-<p>只能修饰成员，表示这个变量只可以在对象内部被访问。</p>
-<ul>
-<li><code>internal</code></li>
-</ul>
-<p>类或成员只能被一个程序集中的代码访问，类的默认修饰符。</p>
-<ul>
-<li><code>protected</code></li>
-</ul>
-<p>子类可以访问，而外部不可访问。</p>
-<h2 id="Class-与-Struct"><a href="#Class-与-Struct" class="headerlink" title="Class 与 Struct"></a>Class 与 Struct</h2><p>它们的区别在何处？</p>
-<p><code>class</code> 变量储存的是地址，而 <code>sruct</code> 变量储存的是值。</p>
-<p>也就是说，如果将一个 <code>class</code> 赋值给另一个 <code>class</code>，那么这两个 <code>class</code> 所指向的是相同的变量。</p>
-<p>而如果把一个 <code>struct</code> 赋值给另一个 <code>struct</code>，那么这两个 <code>struct</code> 是两个值相同的不同的变量。</p>
-<p>同样，当 <code>class</code> 作为形参传入一个函数时，它的值会受到函数内修改的影响，因为访问的都是同一个地址。</p>
-<p>而 <code>struct</code> 作为值只是复制了一份传入函数，函数内修改的是复制体，并不会影响到外面的值。</p>
-<p>对 <code>struct</code> 使用 <code>ref</code> 关键字，即取地址，即可实现和 <code>class</code> 一样的效果。</p>
-<hr>
-<p><code>struct</code> 不能继承 <code>struct</code> 或者 <code>class</code>，无法被继承，只能继承接口。</p>
-<p><code>class</code> 可以继承一个父类，也可以继承接口。</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><code>public class A : B</code> 表示类 A 继承类B，A 是子类，B 是父类，子类可以使用父类中的变量。</p>
-<p>而如果子类中某个函数不想使用父类中的函数，可以采用 <code>override</code> 关键字重新定义这个函数。</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">fn</span>()</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>同时需要在父类的这个函数中添加 <code>virtual</code> 关键字表示这个函数允许被重写。</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fn</span>()</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要注意，父类变量可以存储子类变量的值，但子类变量不可以存储父类变量的值。</p>
-<p>所有类型的基类是 <code>object</code>。</p>
-<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><p>在类前加上此关键字可以在各个文件中写这个类，并且它们最终会合并在一起。</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">p</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>在类前加上 <code>interface</code> 便可以作为一个接口。</p>
-<p>接口内定义若干方法，而不定义它们的实现，且不能添加访问修饰符，默认 <code>public</code>。</p>
-<p>接口只提供声明，不提供实现。</p>
-<p>所以继承接口后需要给出它相应的实现。</p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>添加 <code>abstract</code> 的类无法被实例化，并且可以暂时不实现接口。</p>
-<p><code>abstract</code> 也可以修饰函数，只声明不实现，留给子类实现。</p>
-<p>抽象类中可以实现接口。</p>
-<p>类只能继承一个抽象类。</p>
-<p>抽象类也可以自己声明函数、属性并实现。</p>
-<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GV</span>&lt;<span class="title">T</span>&gt; &#123;</span><br><span class="line">	<span class="keyword">public</span> T x;</span><br><span class="line">	<span class="keyword">public</span> T y;</span><br><span class="line">&#125;</span><br><span class="line">GV&lt;<span class="built_in">int</span>&gt; giv = <span class="keyword">new</span> GV&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure></div>
-
-<p>这样就可以实现同一份代码的不同类型。</p>
-<p>泛型方法：</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span>&lt;<span class="title">T</span>&gt;(<span class="params">T a, T b</span>) <span class="keyword">where</span> T : Actor</span>&#123;</span><br><span class="line">	a.Attack();</span><br><span class="line">	b.Attack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要说明这个泛型继承自哪个类，否则默认就是 <code>object</code>。</p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>使用 <code>delegate</code> 声明一个类型，它可以储存多个相同形式的函数并依次执行，通过 <code>+=</code> 和 <code>-=</code> 控制里面的函数。</p>
-<p>包括这个函数的类型，形参等。</p>
-<div class="code-container" data-rel="Cs"><figure class="iseeu highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">delegate</span> <span class="built_in">float</span> <span class="title">CalcFn</span>(<span class="params"><span class="built_in">float</span> v1, <span class="built_in">float</span> v2</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">float</span> <span class="title">Add</span>(<span class="params"><span class="built_in">float</span> a, <span class="built_in">float</span> b</span>)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">float</span> <span class="title">Mul</span>(<span class="params"><span class="built_in">float</span> a, <span class="built_in">float</span> b</span>)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CalcFn p = Add;</span><br><span class="line">p(<span class="number">1f</span>, <span class="number">2f</span>);</span><br><span class="line">p += Mul;</span><br><span class="line">p(<span class="number">1f</span>, <span class="number">2f</span>);</span><br></pre></td></tr></table></figure></div>
-
-<p>相当于一个函数集合。</p>
-<p><code>Func&lt;T1, T2, TResult&gt;</code> 表示一个委托类型，前面几个是输入参数的类型，最后一个是返回值的类型。</p>
-<p><code>Action&lt;T1, T2&gt;</code> 是无返回值</p>
+<p>可以下载 <a class="link"   href="https://www.mongodb.com/try/download/compass" >Compass<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 使用它的 GUI 界面。</p>
+<p>它的结构是，Cluster（集群）里有多个数据库，每个数据库是相同的，这样一个分布式结构保证它的安全稳定。</p>
+<p>Database（数据库）中有多个 Collection（集合），在集合中有多个 Document（文档），文档就是存储数据的地方，它的格式是 BSON（JSON 的二进制格式，便于存储），Field（字段）就是键，以及它有对应的值。</p>
+<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><p>Create, Read, Update, Delete，四种数据库的基本操作。</p>
+<p><a class="link"   href="https://www.mongodb.com/zh-cn/docs/manual/crud/" >文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 ]]></content>
       <categories>
         <category>Back-End</category>
       </categories>
       <tags>
-        <tag>c season</tag>
+        <tag>database</tag>
       </tags>
   </entry>
   <entry>
@@ -858,6 +888,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Base64 Encoding</title>
+    <url>/c499c9c8.html</url>
+    <content><![CDATA[<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p><a href="https://www.json.cn/document/base64"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111035330.webp"
+                      alt="image.png"
+                ></a></p>
+<p>讲解一下它的编码过程。</p>
+<p>首先把字符转换成 ASCII 编码，然后把它的 ASCII 编码转换为八位二进制码，按顺序连接在一起，然后从最开始六个二进制码对应一个 0～63 的数字，对应到 Base64 编码表，每 3 个字符对应得到 4 个编码后的结果，某一个 6 位中不全则用 0 补齐，若 6 位都是空则对应编码为 <code>=</code>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047913.webp"
+                      alt="image.png"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202409111047613.webp"
+                      alt="image.png"
+                ></p>
+<p>ASCII (American Standard Information Interchange):</p>
+<p><a class="link"   href="https://www.json.cn/document/ascii/" >Link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>encode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Install &amp; Usage</title>
     <url>/4a7ef8fa.html</url>
     <content><![CDATA[<blockquote>
@@ -933,69 +996,6 @@
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DataBase_Note</title>
-    <url>/2c7dde30.html</url>
-    <content><![CDATA[<p>数据库是一种组织、存储和管理数据的系统。它允许用户以结构化的方式存储和检索数据，通常通过数据库管理系统（DBMS）进行操作。</p>
-<h3 id="常见类型"><a href="#常见类型" class="headerlink" title="常见类型"></a>常见类型</h3><ol>
-<li><strong>关系型数据库</strong>：如 MySQL、PostgreSQL、Oracle。使用<strong>表格</strong>来组织数据，通过 SQL 进行操作（这么说 Excel 也可以是一种数据库）。</li>
-<li><strong>非关系型数据库（NoSQL）</strong>：如 MongoDB、Cassandra。用于处理大规模和非结构化数据，灵活性更高。</li>
-<li><strong>内存数据库</strong>：如 Redis、Memcached。用于需要高速读写的数据，数据存储在内存中。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>概念</th>
-<th>关系型数据库（如MySQL）</th>
-<th>非关系型数据库（如MongoDB）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>表&#x2F;集合</td>
-<td>表（Table）</td>
-<td>集合（Collection）</td>
-</tr>
-<tr>
-<td>行&#x2F;文档</td>
-<td>行（Row）</td>
-<td>文档（Document）</td>
-</tr>
-<tr>
-<td>列&#x2F;字段</td>
-<td>列（Column）</td>
-<td>字段（Field）</td>
-</tr>
-<tr>
-<td>模式</td>
-<td>固定模式（Schema）</td>
-<td>无模式（Schema-less）</td>
-</tr>
-<tr>
-<td>关系</td>
-<td>支持复杂的表与表之间的关系</td>
-<td>不直接支持</td>
-</tr>
-</tbody></table>
-<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><p>那就从 MongoDB 开始学起，原因是之前配置 twikoo 的评论系统时误打误撞用到过，现在的一个新项目需要用到数据库。</p>
-<p>MongoDB 是一种文档型 NoSQL 数据库，主要有以下特点：</p>
-<ul>
-<li><strong>文档型存储</strong>：数据以文档的形式存储，文档是JSON格式的（MongoDB中称为BSON格式，二进制形式的JSON）。</li>
-<li><strong>无模式</strong>：与传统数据库不同，MongoDB中的文档不需要固定的表结构，可以灵活地存储不同结构的数据。</li>
-<li><strong>横向扩展</strong>：MongoDB可以很容易地通过增加更多的服务器节点来应对数据的增长，而不需要更强的硬件。</li>
-</ul>
-<p>可以下载 <a class="link"   href="https://www.mongodb.com/try/download/compass" >Compass<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 使用它的 GUI 界面。</p>
-<p>它的结构是，Cluster（集群）里有多个数据库，每个数据库是相同的，这样一个分布式结构保证它的安全稳定。</p>
-<p>Database（数据库）中有多个 Collection（集合），在集合中有多个 Document（文档），文档就是存储数据的地方，它的格式是 BSON（JSON 的二进制格式，便于存储），Field（字段）就是键，以及它有对应的值。</p>
-<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><p>Create, Read, Update, Delete，四种数据库的基本操作。</p>
-<p><a class="link"   href="https://www.mongodb.com/zh-cn/docs/manual/crud/" >文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-]]></content>
-      <categories>
-        <category>Back-End</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
       </tags>
   </entry>
   <entry>
@@ -1137,27 +1137,138 @@ title P
       </tags>
   </entry>
   <entry>
-    <title>Embedding FlowFerry into your Obsidian workflow</title>
-    <url>/49904686.html</url>
-    <content><![CDATA[<p>前段时间，经朋友推荐，我入手了一款 App：<strong>FlowFerry</strong>，经过一段时间的使用之后，我发现它可以很好地嵌入到我的 Obsidian 工作流中。</p>
-<p>我的原始工作流充斥着重复劳动：复制内容，在 Obsidian 新建文档、粘贴、排版，最后才是整合。那么有没有什么办法把其中一部分步骤拆分出来,利用碎片化的时间进行处理呢？</p>
-<p>FlowFerry 给出了答案。它拥有跨平台的生态，当我出门在外使用手机浏览，遇到了一篇很打动我的文章时，我就可以使用 FlowFerry 将这篇文章暂存本地，等待处理，完成信息获取。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202502151906647.png"
-                      alt="image.png|400"
-                ></p>
-<p>就这吗？FlowFerry 可不止于此。</p>
-<p>很多软件都有「收藏」的功能，但不同信息来源的文章缺少一个统一的「收藏夹」，这经常导致印象里上次看到的很好的文章却想不起来放在了哪个收藏夹里——它们总是被遗忘。</p>
-<p>当你使用 FlowFerry 后，无论在哪里看到的一篇好文章，随时都可以将其内容抓取到本地并打上标签，建立一个专属于你的本地文章精选集。它支持<strong>本地离线阅读</strong>，在一些没有网络的环境中，我也可以随时打开它阅读文章。</p>
-<p>当我再次坐到电脑面前时，通过 FlowFerry 的多端同步，我便可以直接将文章发送至 Obsidian 仓库，进行下一步的分类、整合，这些切切实实地提高了我处理信息的效率。</p>
+    <title>Flutter Note</title>
+    <url>/7b1ef955.html</url>
+    <content><![CDATA[<p><a href="https://flutter.dev/"><code>Flutter</code></a> 是基于 <a href="https://dart.dev/"><code>dart</code></a> 的一个跨平台框架。</p>
+<p><code>dart</code> 是与 <code>C#</code> 相似的面向对象编程语言。</p>
+<p>Core concept is: Widget inside Widget.</p>
+<p>对象嵌套对象。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>有以下类型的变量：</p>
+<ul>
+<li><code>var</code>：带有强类型推断</li>
+<li><code>int</code></li>
+<li><code>String</code></li>
+<li><code>List</code></li>
+<li><code>Map</code></li>
+<li><code>double</code></li>
+</ul>
+<p>有以下关键字：</p>
+<ul>
+<li><code>const</code>：编译时常量</li>
+<li><code>final</code>：运行时常量</li>
+</ul>
+<hr>
+<p>需要有一个 <code>main()</code> 函数，这点与 <code>c++</code> 类似。</p>
+<hr>
+<p>可以通过 <code>@override</code> 关键字覆写方法。</p>
+<p>匿名函数实现：</p>
+<div class="code-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="code"><pre><span class="line">() &#123;</span><br><span class="line">	<span class="built_in">print</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// equal to</span></span><br><span class="line"></span><br><span class="line">() =&gt; <span class="built_in">print</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>不同的是，箭头函数只可以有一行。</p>
+<p>访问颜色需要通过 <code>Colors</code> 对象。</p>
+<p>访问图标需要通过 <code>Icons</code> 对象。</p>
+<p>访问图像时：</p>
+<ul>
+<li>如果是网页图片，使用 <code>Image.network(url)</code></li>
+<li>如果是本地图片，需要先在 <code>pubspec.yml</code> 中添加 assets 路径，然后使用 <code>Image.asset(path)</code></li>
+</ul>
+<p>有以下几大主要组件：</p>
+<ul>
+<li><code>Row</code></li>
+<li><code>Column</code></li>
+</ul>
+<p>这两者对应 <code>flex</code> 方向为行和列的容器，也有主轴和交叉轴的概念。</p>
+<p>默认主轴方向无限长，此时如果有子元素的宽度&#x2F;高度和主轴一样是 <code>double.infinity</code> 会报错。</p>
+<p>交叉轴方向大小由父元素决定。</p>
+<ul>
+<li><code>Center</code></li>
+</ul>
+<p>居中元素。</p>
+<ul>
+<li><code>Container</code></li>
+</ul>
+<p>等价于 <code>&lt;div&gt;</code> 标签，可以设置颜色大小，margin、padding和各种装饰。</p>
+<ul>
+<li><code>SizedBox</code></li>
+</ul>
+<p>仅仅能设置大小的一个盒子，用于优化性能。</p>
+<ul>
+<li><code>Padding</code></li>
+</ul>
+<p>仅仅能设置 padding 的一个盒子，用于优化性能。</p>
+<ul>
+<li><code>Text</code></li>
+<li><code>ListTile</code><ul>
+<li><code>leading</code></li>
+<li><code>title</code></li>
+<li><code>titleColor</code></li>
+<li><code>trailing</code></li>
+<li><code>title</code></li>
+<li><code>onTap</code></li>
+</ul>
+</li>
+</ul>
+<p>一个占据整行的盒子，可以设置各种样式和点击事件。</p>
 ]]></content>
       <categories>
-        <category>Tool</category>
+        <category>Front-End</category>
       </categories>
       <tags>
-        <tag>obsidian</tag>
+        <tag>dart</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Note</title>
+    <url>/772e1c59.html</url>
+    <content><![CDATA[<blockquote>
+<p>东拼西凑的 <code>python</code> 初学之路。</p>
+</blockquote>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li>制表符：<code>\t</code></li>
+<li>换行符：<code>\n</code></li>
+<li>去除右边空白：<code>.rstrip()</code></li>
+<li>去除左边空白：<code>.lstrip()</code></li>
+<li>去除左右两边空白（包括换行符）：<code>.strip()</code></li>
+<li>字符串内使用引号：<code>\&quot;</code></li>
+<li>首字母大写：<code>.title()</code></li>
+<li>全部大写：<code>.upper()</code></li>
+<li>全部小写：<code>.lower()</code></li>
+<li>构造字符串（花括号内为变量）：&#96;f”Hello,{variant}.”</li>
+<li>去除前缀：<code>.removeprefix(&quot;string&quot;)</code></li>
+<li>去除后缀：<code>.removesuffix(&quot;.txt&quot;)</code></li>
+</ul>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><ul>
+<li>乘法：<code>*</code></li>
+<li>除法（返回浮点数）：<code>/</code></li>
+<li>大数易读：<code>1_000_000_000</code></li>
+<li>同时赋值：<code>x, y, z = 0, 2, 7</code></li>
+<li>同时输出：<code>print(x, y, z)</code></li>
+<li>幂次：<code>**</code></li>
+<li>Python 之禅：<code>import this</code></li>
+</ul>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>定义：方括号扩死，里面元素用逗号隔开。</p>
+<p>下标和数组一样，从零开始。</p>
+<p>负数下标表示倒数第几个。</p>
+<ul>
+<li>末尾插入元素：<code>.append()</code></li>
+<li>对应位置插入元素：<code>.insert(1, &#39;fgh&#39;)</code></li>
+<li>删除对应位置的元素：<code>del b[1]</code></li>
+<li>弹出末尾元素：<code>.pop()</code></li>
+<li>访问弹出元素：<code>a = b.pop()</code></li>
+<li>弹出对应位置的元素：<code>.pop(1)</code></li>
+<li><code>pop</code> 和 <code>del</code> 的区别在于 <code>pop</code> 可访问删除的元素，<code>del</code> 不行。</li>
+<li>根据值删除<strong>一个</strong>元素：<code>.remove(&quot;spw&quot;)</code></li>
+<li>排序（列表中元素类型要一样才能排序，按照字典序排序）：<code>.sort()</code></li>
+<li>倒序：<code>.sort(reverse = True)</code></li>
+<li>临时排序，不改变列表，可加入参数：<code>sorted(b, reverse = True)</code></li>
+<li>访问列表中元素个数：<code>len(b)</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Back-End</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1175,6 +1286,209 @@ title P
       <tags>
         <tag>javascript</tag>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My Website Dev Log</title>
+    <url>/51cade6f.html</url>
+    <content><![CDATA[<h1 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h1><h2 id="July"><a href="#July" class="headerlink" title="July"></a>July</h2><h3 id="29"><a href="#29" class="headerlink" title="29"></a>29</h3><p>刚有点想法，利用 <code>create-nuxt-app</code> 创建了一个 nuxt2 的项目，很多配置项我都没见过，一一了解了一遍。</p>
+<p>比如一个网站的开发流程啊，动态静态网站区别，网站部署，框架有什么用，选什么框架，UI框架又是什么。</p>
+<p>框架选了 Nuxt，UI 框架选了 Tailwind css</p>
+<p>和铃仙交流了很多，我们都收获不少。</p>
+<h3 id="30"><a href="#30" class="headerlink" title="30"></a>30</h3><p>继续昨天的任务。</p>
+<p>简单完成了主页和一个没有什么用的 Nav，做了一个小 NavButton，试了试 Tailwind UI 的 404 页面，顺便把它变成了一个路由页面。</p>
+<p>然后把网站利用 gh-pages 包部署到 github pages 上。</p>
+<p>在晚上意识到原来用的是老版本的 Nuxt，于是将项目迁移到最新的 Nuxt3.12 版本。</p>
+<h3 id="31"><a href="#31" class="headerlink" title="31"></a>31</h3><p>重头戏，写了好多东西（其实也没有多少）</p>
+<p>把项目重构了一遍，结构更加清晰。</p>
+<p>使用路由，重载路由规则。</p>
+<p>学习 Typescript，这玩意越来越像 C++ JAVA C# 这种语言了。</p>
+<p>然后学习项目结构配置，</p>
+<p>将包管理器换为 pnpm，</p>
+<p>完善了 Nav 布局，</p>
+<p>简单入门 layouts，middleware，</p>
+<p>配置一下 404 的路由规则。</p>
+<p>把 NavButton 的 Props 加上了，简单写了几个待完善的页面。</p>
+<p>分别为默认和 layouts 配置了页面切换动画。</p>
+<p>Vsc 插件生态。</p>
+<p>添加了 font-awesome 图标支持，只需要在 config 里添加需要用的图标名称，然后在对应组件里添加：<code>&lt;font-awesome icon=&quot;name&quot; /&gt; </code> 即可。</p>
+<p>github pages url 容易出问题，要么尽量使用相对路径，要么还是换个域名吧，然后我就部署到 vercel 了。</p>
+<h2 id="Auguest"><a href="#Auguest" class="headerlink" title="Auguest"></a>Auguest</h2><p>label</p>
+<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>完善布局。</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>咕咕咕</p>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>完善侧边栏，文章组件卡片和 NavBar 以及布局。</p>
+<p>完善 Archives Albums About 页面。</p>
+<p>先这样吧。</p>
+<h3 id="04"><a href="#04" class="headerlink" title="04"></a>04</h3><p>修复 bug，适配响应式。</p>
+<h3 id="05"><a href="#05" class="headerlink" title="05"></a>05</h3><p>没做什么，用 js 模拟了一下 vue 的响应式，算是稍微深入了解了一下原理。</p>
+<h3 id="06"><a href="#06" class="headerlink" title="06"></a>06</h3><p>更新卡片以及链接的样式，很好看。</p>
+<h3 id="07"><a href="#07" class="headerlink" title="07"></a>07</h3><p>着手个人作品集网站的整理和开发，使用 Vue 框架，打算做简单点不需要太多功能。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408081146820.webp"
+                      alt="image.png"
+                ></p>
+<p>目前是打算先把之前写过的各种东西组件化放进来。</p>
+<p>才整了三个组件我就觉得麻烦了，然后写了两个脚本分别生成卡片组和路由。</p>
+<h3 id="08"><a href="#08" class="headerlink" title="08"></a>08</h3><p>完善个人网站响应式，优化项目结构，研究了一下，使得局域网设备可以实时预览项目（改一下 <code>vite.config.js</code>，防火墙的锅）</p>
+<p>简单学习了解了一下浏览器的工作原理，堪比一个操作系统的复杂度。</p>
+<h3 id="09"><a href="#09" class="headerlink" title="09"></a>09</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408091138933.webp"
+                      alt="image.png"
+                ></p>
+<p>完善了下按钮样式和其它布局。</p>
+<p>把所有的旧组件都添加完成了！</p>
+<p>接下来可以开始新的练习了。</p>
+<p>很棒！</p>
+<h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><p>中间忘记写日志了，现在是这样的：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408281739379.webp"
+                      alt="image.png"
+                ></p>
+<p><strong>UPDATES:</strong></p>
+<ul>
+<li>把所有的小项目组件化</li>
+<li>完善主页样式和其它页面样式</li>
+<li>添加了新项目 CalendarView：<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408281740987.webp"
+                      alt="Snipaste_2024-08-28_17-40-13.png"
+                ></li>
+<li>介绍一下，这是一个记录 App，日历仅用于索引，左键可以将当天的感受指数 $+1$，右键是 $-1$,会根据感受指数显示不同的颜色，控制面板现在有两个按钮，第一个是定位到当天，第二个是显示年视图。做了好看的切换动画。后端使用 Express，暂时只运行在本地，用 <code>json</code> 文件作为数据库存储数据，目前仅个人使用。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>logs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React Note</title>
+    <url>/f139e650.html</url>
+    <content><![CDATA[<blockquote>
+<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
+</blockquote>
+<h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><p>先说一下基础概念。</p>
+<ul>
+<li>**组件化(Component)**：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
+<li>**状态(State)**：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
+<li>**属性(Props)**：传递给组件的数据，相当于参数。</li>
+</ul>
+<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
+<div class="code-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><p>状态，也就是 Vue 中的响应式数据。</p>
+<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
+<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以有两个参数：</p>
+<ul>
+<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
+<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
+</ul>
+<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
+<h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
+<div class="code-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>类组件。</p>
+<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
+<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
+<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
+<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数组件。</p>
+<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>需要渲染什么直接 return 即可。</p>
+<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
+<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
+
+<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
+<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
+<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
+<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
+<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
+<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
+<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
+<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
+<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
+<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h1><h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
+]]></content>
+      <categories>
+        <category>Front-End</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Regex Note</title>
+    <url>/23441a96.html</url>
+    <content><![CDATA[<blockquote>
+<p>regex</p>
+</blockquote>
+<p>推荐在线测试网站：<a class="link"   href="https://regex101.com/" >Link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<ul>
+<li><code>?</code> 代表前面这个字符可有可无<ul>
+<li><code>used?</code> 匹配的是 <code>use</code> 和 <code>used</code>。</li>
+</ul>
+</li>
+<li><code>*</code> 代表前面这个字符可以出现 0 次到无数次。<ul>
+<li><code>ab*c</code> 可以匹配 <code>ac</code>，也可以匹配 <code>abbbbc</code>。</li>
+</ul>
+</li>
+<li><code>+</code> 与 <code>*</code> 类似，但不可以出现 0 次。</li>
+<li><code>&#123;x, y&#125;</code> 代表前面的字符出现 x 到 y 次，如果只出现 x 次省略 <code>,y</code> ，如果出现大于等于 x 次那么省略 <code>y</code>。</li>
+<li>如果想要匹配多个字符，那么用括号包裹它们。</li>
+<li><code>(|)</code> 是或运算符，需要用括号包裹。<ul>
+<li><code>a (cat|dog)</code> 可以匹配 <code>a cat</code> 或者 <code>a dog</code>。</li>
+</ul>
+</li>
+<li><code>[]</code> 里的字符代表匹配的选择范围。<ul>
+<li>如 <code>[abc]</code> <code>[a-z]</code> <code>[a-zA-z0-9]</code>。</li>
+</ul>
+</li>
+<li><code>[^]</code> 表示非。<ul>
+<li>如 <code>[^0-9]</code> 表示所有的非数字字符。</li>
+</ul>
+</li>
+<li><code>\d</code> 表示数字字符，等同于 <code>[0-9]</code>。</li>
+<li><code>\w</code> 表示单词字符，所有的字母加下划线。</li>
+<li><code>\s</code> 表示空白符，包含 <code>tab</code> 和换行符。</li>
+<li><code>\D</code> 代表非数字字符，其它以此类推。</li>
+<li><code>.</code> 代表任意字符（不包括换行符）。</li>
+<li><code>^</code> 表示从行首开始匹配，<code>$</code> 表示从行尾开始匹配。<ul>
+<li>如 <code>^a</code> 表示只匹配行首的 <code>a</code>，<code>a$</code> 只匹配行尾的 <code>a</code>。</li>
+</ul>
+</li>
+<li><code>+?</code> 会将匹配模式由默认的尽可能多的匹配变成尽可能少的匹配。</li>
+<li><code>\b</code> 表示单词字符的边界。</li>
+</ul>
+<p><strong>小例子：</strong></p>
+<ul>
+<li>匹配十六进制色值：<code>/#[a-fA-F0-9]&#123;6&#125;\b/gm</code></li>
+<li>匹配 <code>IPV4</code> 地址：<code>/\b((25[0-5]|2[0-4]\d|[01]?\d\d?)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d\d?)\b/gm</code></li>
+<li>匹配 vue 指令：<code>/^v-([\w-]+)$/</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Back-End</category>
+      </categories>
+      <tags>
+        <tag>regex</tag>
       </tags>
   </entry>
   <entry>
@@ -1518,263 +1832,6 @@ title P
       </tags>
   </entry>
   <entry>
-    <title>Python Note</title>
-    <url>/772e1c59.html</url>
-    <content><![CDATA[<blockquote>
-<p>东拼西凑的 <code>python</code> 初学之路。</p>
-</blockquote>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
-<li>制表符：<code>\t</code></li>
-<li>换行符：<code>\n</code></li>
-<li>去除右边空白：<code>.rstrip()</code></li>
-<li>去除左边空白：<code>.lstrip()</code></li>
-<li>去除左右两边空白（包括换行符）：<code>.strip()</code></li>
-<li>字符串内使用引号：<code>\&quot;</code></li>
-<li>首字母大写：<code>.title()</code></li>
-<li>全部大写：<code>.upper()</code></li>
-<li>全部小写：<code>.lower()</code></li>
-<li>构造字符串（花括号内为变量）：&#96;f”Hello,{variant}.”</li>
-<li>去除前缀：<code>.removeprefix(&quot;string&quot;)</code></li>
-<li>去除后缀：<code>.removesuffix(&quot;.txt&quot;)</code></li>
-</ul>
-<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><ul>
-<li>乘法：<code>*</code></li>
-<li>除法（返回浮点数）：<code>/</code></li>
-<li>大数易读：<code>1_000_000_000</code></li>
-<li>同时赋值：<code>x, y, z = 0, 2, 7</code></li>
-<li>同时输出：<code>print(x, y, z)</code></li>
-<li>幂次：<code>**</code></li>
-<li>Python 之禅：<code>import this</code></li>
-</ul>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>定义：方括号扩死，里面元素用逗号隔开。</p>
-<p>下标和数组一样，从零开始。</p>
-<p>负数下标表示倒数第几个。</p>
-<ul>
-<li>末尾插入元素：<code>.append()</code></li>
-<li>对应位置插入元素：<code>.insert(1, &#39;fgh&#39;)</code></li>
-<li>删除对应位置的元素：<code>del b[1]</code></li>
-<li>弹出末尾元素：<code>.pop()</code></li>
-<li>访问弹出元素：<code>a = b.pop()</code></li>
-<li>弹出对应位置的元素：<code>.pop(1)</code></li>
-<li><code>pop</code> 和 <code>del</code> 的区别在于 <code>pop</code> 可访问删除的元素，<code>del</code> 不行。</li>
-<li>根据值删除<strong>一个</strong>元素：<code>.remove(&quot;spw&quot;)</code></li>
-<li>排序（列表中元素类型要一样才能排序，按照字典序排序）：<code>.sort()</code></li>
-<li>倒序：<code>.sort(reverse = True)</code></li>
-<li>临时排序，不改变列表，可加入参数：<code>sorted(b, reverse = True)</code></li>
-<li>访问列表中元素个数：<code>len(b)</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Back-End</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React Note</title>
-    <url>/f139e650.html</url>
-    <content><![CDATA[<blockquote>
-<p>React 采用了一种全新的 JSX 格式，对原来 JS 的语法做了进一步的扩展，使你可以在里面使用 HTML 标签从而将它变成一个组件，它的组件化的设计理念与 Vue 有很多相似之处。</p>
-</blockquote>
-<h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><p>先说一下基础概念。</p>
-<ul>
-<li>**组件化(Component)**：和 Vue 基本相同，页面中所见皆是组件，不同的组件构成了一个页面。</li>
-<li>**状态(State)**：状态是组件的数据，组件的显示内容可以根据状态的变化而变化。相当于 Vue 中的响应式变量。</li>
-<li>**属性(Props)**：传递给组件的数据，相当于参数。</li>
-</ul>
-<p>不使用框架直接在 HTML 中使用可以引入两个 <code>script</code> 标签：</p>
-<div class="code-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><p>状态，也就是 Vue 中的响应式数据。</p>
-<p>直接修改状态的数据并不会导致页面更新，因为这个状态占用的内存地址没有发生改变，所以如果想要让页面更新，需要更新这个状态，用到 <code>setState</code> 方法：</p>
-<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>([arg1], [arg2])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>可以有两个参数：</p>
-<ul>
-<li>第一个参数：可以是对象或者函数，如果是对象则直接修改对应的键值，这里相当于将两个对象进行了合并，如果是函数则执行相应的操作。</li>
-<li>第二个参数：回调函数，由于 <code>setState</code> 是一个异步操作，所以第二个参数就是在执行完成第一个参数后再执行的操作。</li>
-</ul>
-<p>在 React 的 HTML 标签中使用变量需要用到插值表达式，用花括号包裹即可，属性值是变量时不需要双引号包裹。</p>
-<h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><p>先把根组件挂载到根元素上，这里在 <code>index.html</code> 中有一个 id 为 root 的元素，我们要把根组件挂载到这上面并渲染：</p>
-<div class="code-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">root.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br></pre></td></tr></table></figure></div>
-
-<p><code>createRoot</code> 返回一个根对象，有一个 <code>render</code> 方法，可以将 React 组件渲染到页面。</p>
-<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>类组件。</p>
-<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(); <span class="comment">/* 调用父类的构造函数 */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="number">2</span>: <span class="number">2</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [component]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要有一个 <code>render</code> 方法来渲染组件，这个方法返回一个组件，组件只能由<strong>一个根元素包裹</strong>。有多行内容时，需要用小括号进行包裹。</p>
-<p>但我们有时候并不想额外嵌套一个 <code>div</code> 标签，于是可以使用 <code>&lt;Fragment&gt;</code> 标签包裹，它不会被渲染，可以简写为 <code>&lt;&gt;&lt;/&gt;</code>。</p>
-<p>组件挂载时会先执行 <code>render</code> 方法，因此不要有任何多余的操作。</p>
-<p>只有状态值(state)或属性值(props)发生变化后才会触发重新渲染。</p>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数组件。</p>
-<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>需要渲染什么直接 return 即可。</p>
-<p>变量函数可以直接定义，但由于没有构造函数，需要使用 <code>useState()</code> 来初始化状态值。</p>
-<div class="code-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title class_">React</span>.<span class="title function_">useState</span>([initValue]);</span><br></pre></td></tr></table></figure></div>
-
-<p><code>useState()</code> 返回一个数组，第一个是初始化的状态值，第二个是设置这个状态值的函数，可以使用解构的方法得到。</p>
-<p>这样使用变量就可以直接使用无需 <code>this.state</code>，修改只需要 <code>setState(newValue)</code> 而无需 <code>this.setState(&#123;key: newValue&#125;)</code>。</p>
-<p>像极了 Vue 中的组合式 API 和选项式 API 之间的关系。</p>
-<p>但是如果需要在挂载后执行 <code>fetch</code> 操作，可能会出现死循环，<code>fetch</code> 到数据后，状态修改，函数从头执行……</p>
-<p>在类组件中我们可以使用生命周期方法，那函数组件呢？</p>
-<p>这里需要使用 <code>useEffect</code>，<code>useEffect</code> 是 React 中的一个 Hook，用于在函数组件中处理副作用（side effects）。副作用是指那些在组件渲染过程中需要执行但不直接产生 UI 的代码，比如数据获取、订阅、手动修改 DOM、记录日志等。</p>
-<p>第一个参数是要执行的函数，函数可以返回一个函数，作为清理函数；</p>
-<p>第二个参数是一个依赖数组，如果为空代表只执行一次；如果没有那么每次渲染都会执行；如果数组包含一个或多个变量，那么会在依赖发生变化时才会执行。</p>
-<p>函数组件的参数就是用来接收 props 的，也是一个对象。</p>
-<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h1><h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>可以在元素中添加 <code>style</code> 属性，但是属性值需要是一个对象，而由于变量需要用花括号包裹，所以需要用到两个花括号。</p>
-]]></content>
-      <categories>
-        <category>Front-End</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Regex Note</title>
-    <url>/23441a96.html</url>
-    <content><![CDATA[<blockquote>
-<p>regex</p>
-</blockquote>
-<p>推荐在线测试网站：<a class="link"   href="https://regex101.com/" >Link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<ul>
-<li><code>?</code> 代表前面这个字符可有可无<ul>
-<li><code>used?</code> 匹配的是 <code>use</code> 和 <code>used</code>。</li>
-</ul>
-</li>
-<li><code>*</code> 代表前面这个字符可以出现 0 次到无数次。<ul>
-<li><code>ab*c</code> 可以匹配 <code>ac</code>，也可以匹配 <code>abbbbc</code>。</li>
-</ul>
-</li>
-<li><code>+</code> 与 <code>*</code> 类似，但不可以出现 0 次。</li>
-<li><code>&#123;x, y&#125;</code> 代表前面的字符出现 x 到 y 次，如果只出现 x 次省略 <code>,y</code> ，如果出现大于等于 x 次那么省略 <code>y</code>。</li>
-<li>如果想要匹配多个字符，那么用括号包裹它们。</li>
-<li><code>(|)</code> 是或运算符，需要用括号包裹。<ul>
-<li><code>a (cat|dog)</code> 可以匹配 <code>a cat</code> 或者 <code>a dog</code>。</li>
-</ul>
-</li>
-<li><code>[]</code> 里的字符代表匹配的选择范围。<ul>
-<li>如 <code>[abc]</code> <code>[a-z]</code> <code>[a-zA-z0-9]</code>。</li>
-</ul>
-</li>
-<li><code>[^]</code> 表示非。<ul>
-<li>如 <code>[^0-9]</code> 表示所有的非数字字符。</li>
-</ul>
-</li>
-<li><code>\d</code> 表示数字字符，等同于 <code>[0-9]</code>。</li>
-<li><code>\w</code> 表示单词字符，所有的字母加下划线。</li>
-<li><code>\s</code> 表示空白符，包含 <code>tab</code> 和换行符。</li>
-<li><code>\D</code> 代表非数字字符，其它以此类推。</li>
-<li><code>.</code> 代表任意字符（不包括换行符）。</li>
-<li><code>^</code> 表示从行首开始匹配，<code>$</code> 表示从行尾开始匹配。<ul>
-<li>如 <code>^a</code> 表示只匹配行首的 <code>a</code>，<code>a$</code> 只匹配行尾的 <code>a</code>。</li>
-</ul>
-</li>
-<li><code>+?</code> 会将匹配模式由默认的尽可能多的匹配变成尽可能少的匹配。</li>
-<li><code>\b</code> 表示单词字符的边界。</li>
-</ul>
-<p><strong>小例子：</strong></p>
-<ul>
-<li>匹配十六进制色值：<code>/#[a-fA-F0-9]&#123;6&#125;\b/gm</code></li>
-<li>匹配 <code>IPV4</code> 地址：<code>/\b((25[0-5]|2[0-4]\d|[01]?\d\d?)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d\d?)\b/gm</code></li>
-<li>匹配 vue 指令：<code>/^v-([\w-]+)$/</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Back-End</category>
-      </categories>
-      <tags>
-        <tag>regex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>My Website Dev Log</title>
-    <url>/51cade6f.html</url>
-    <content><![CDATA[<h1 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h1><h2 id="July"><a href="#July" class="headerlink" title="July"></a>July</h2><h3 id="29"><a href="#29" class="headerlink" title="29"></a>29</h3><p>刚有点想法，利用 <code>create-nuxt-app</code> 创建了一个 nuxt2 的项目，很多配置项我都没见过，一一了解了一遍。</p>
-<p>比如一个网站的开发流程啊，动态静态网站区别，网站部署，框架有什么用，选什么框架，UI框架又是什么。</p>
-<p>框架选了 Nuxt，UI 框架选了 Tailwind css</p>
-<p>和铃仙交流了很多，我们都收获不少。</p>
-<h3 id="30"><a href="#30" class="headerlink" title="30"></a>30</h3><p>继续昨天的任务。</p>
-<p>简单完成了主页和一个没有什么用的 Nav，做了一个小 NavButton，试了试 Tailwind UI 的 404 页面，顺便把它变成了一个路由页面。</p>
-<p>然后把网站利用 gh-pages 包部署到 github pages 上。</p>
-<p>在晚上意识到原来用的是老版本的 Nuxt，于是将项目迁移到最新的 Nuxt3.12 版本。</p>
-<h3 id="31"><a href="#31" class="headerlink" title="31"></a>31</h3><p>重头戏，写了好多东西（其实也没有多少）</p>
-<p>把项目重构了一遍，结构更加清晰。</p>
-<p>使用路由，重载路由规则。</p>
-<p>学习 Typescript，这玩意越来越像 C++ JAVA C# 这种语言了。</p>
-<p>然后学习项目结构配置，</p>
-<p>将包管理器换为 pnpm，</p>
-<p>完善了 Nav 布局，</p>
-<p>简单入门 layouts，middleware，</p>
-<p>配置一下 404 的路由规则。</p>
-<p>把 NavButton 的 Props 加上了，简单写了几个待完善的页面。</p>
-<p>分别为默认和 layouts 配置了页面切换动画。</p>
-<p>Vsc 插件生态。</p>
-<p>添加了 font-awesome 图标支持，只需要在 config 里添加需要用的图标名称，然后在对应组件里添加：<code>&lt;font-awesome icon=&quot;name&quot; /&gt; </code> 即可。</p>
-<p>github pages url 容易出问题，要么尽量使用相对路径，要么还是换个域名吧，然后我就部署到 vercel 了。</p>
-<h2 id="Auguest"><a href="#Auguest" class="headerlink" title="Auguest"></a>Auguest</h2><p>label</p>
-<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>完善布局。</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>咕咕咕</p>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>完善侧边栏，文章组件卡片和 NavBar 以及布局。</p>
-<p>完善 Archives Albums About 页面。</p>
-<p>先这样吧。</p>
-<h3 id="04"><a href="#04" class="headerlink" title="04"></a>04</h3><p>修复 bug，适配响应式。</p>
-<h3 id="05"><a href="#05" class="headerlink" title="05"></a>05</h3><p>没做什么，用 js 模拟了一下 vue 的响应式，算是稍微深入了解了一下原理。</p>
-<h3 id="06"><a href="#06" class="headerlink" title="06"></a>06</h3><p>更新卡片以及链接的样式，很好看。</p>
-<h3 id="07"><a href="#07" class="headerlink" title="07"></a>07</h3><p>着手个人作品集网站的整理和开发，使用 Vue 框架，打算做简单点不需要太多功能。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408081146820.webp"
-                      alt="image.png"
-                ></p>
-<p>目前是打算先把之前写过的各种东西组件化放进来。</p>
-<p>才整了三个组件我就觉得麻烦了，然后写了两个脚本分别生成卡片组和路由。</p>
-<h3 id="08"><a href="#08" class="headerlink" title="08"></a>08</h3><p>完善个人网站响应式，优化项目结构，研究了一下，使得局域网设备可以实时预览项目（改一下 <code>vite.config.js</code>，防火墙的锅）</p>
-<p>简单学习了解了一下浏览器的工作原理，堪比一个操作系统的复杂度。</p>
-<h3 id="09"><a href="#09" class="headerlink" title="09"></a>09</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408091138933.webp"
-                      alt="image.png"
-                ></p>
-<p>完善了下按钮样式和其它布局。</p>
-<p>把所有的旧组件都添加完成了！</p>
-<p>接下来可以开始新的练习了。</p>
-<p>很棒！</p>
-<h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><p>中间忘记写日志了，现在是这样的：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408281739379.webp"
-                      alt="image.png"
-                ></p>
-<p><strong>UPDATES:</strong></p>
-<ul>
-<li>把所有的小项目组件化</li>
-<li>完善主页样式和其它页面样式</li>
-<li>添加了新项目 CalendarView：<ul>
-<li><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202408281740987.webp"
-                      alt="Snipaste_2024-08-28_17-40-13.png"
-                ></li>
-<li>介绍一下，这是一个记录 App，日历仅用于索引，左键可以将当天的感受指数 $+1$，右键是 $-1$,会根据感受指数显示不同的颜色，控制面板现在有两个按钮，第一个是定位到当天，第二个是显示年视图。做了好看的切换动画。后端使用 Express，暂时只运行在本地，用 <code>json</code> 文件作为数据库存储数据，目前仅个人使用。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>logs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TypeScript Note</title>
     <url>/a4a6c774.html</url>
     <content><![CDATA[<blockquote>
@@ -1848,399 +1905,6 @@ title P
       </categories>
       <tags>
         <tag>typescript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vim Note</title>
-    <url>/d32595a8.html</url>
-    <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small info">
-    <p>本文使用 Obsidian 的 Vim 模式写作。</p>
-
-  </div>
-
-<h2 id="什么是-Vim"><a href="#什么是-Vim" class="headerlink" title="什么是 Vim"></a>什么是 Vim</h2><blockquote>
-<p>Vim是一个类似于<a class="link"   href="https://baike.baidu.com/item/Vi/5043202?fromModule=lemma_inlink" >Vi<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>的高度可定制的<a class="link"   href="https://baike.baidu.com/item/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/8853160?fromModule=lemma_inlink" >文本编辑器<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，在Vi的基础上改进和增加了很多特性。Vim是<a class="link"   href="https://baike.baidu.com/item/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6/405190?fromModule=lemma_inlink" >自由软件<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。Vim普遍被推崇为类Vi编辑器中最好的一个，事实上真正的劲敌来自Emacs的不同变体。1999 年<a class="link"   href="https://baike.baidu.com/item/Emacs/0?fromModule=lemma_inlink" >Emacs<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>被选为Linuxworld文本编辑分类的优胜者，Vim屈居第二。但在2000年2月Vim赢得了<a class="link"   href="https://baike.baidu.com/item/Slashdot/1329225?fromModule=lemma_inlink" >Slashdot<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> Beanie的最佳<a class="link"   href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81/114160?fromModule=lemma_inlink" >开放源代码<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>文本编辑器大奖，又将Emacs推至二线。</p>
-</blockquote>
-<p>最近在学 Linux，不可避免地需要使用 Vim 进行一些代码编辑（Linux 系统自带的文本编辑器）。</p>
-<p>感叹一下创造 Vim 的人的智慧。</p>
-<p>鼠标是什么东西，我不知道。</p>
-<p>码字效率++</p>
-<p><a class="link"   href="https://vim.nauxscript.com/" >一个比较不错的教程文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<h2 id="界面-移动"><a href="#界面-移动" class="headerlink" title="界面&#x2F;移动"></a>界面&#x2F;移动</h2><table>
-<thead>
-<tr>
-<th align="center">Key</th>
-<th align="center">Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>h</code></td>
-<td align="center">Left</td>
-</tr>
-<tr>
-<td align="center"><code>j</code></td>
-<td align="center">Down</td>
-</tr>
-<tr>
-<td align="center"><code>k</code></td>
-<td align="center">UP</td>
-</tr>
-<tr>
-<td align="center"><code>l</code></td>
-<td align="center">Right</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + y</code></td>
-<td align="center">上一行</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + e</code></td>
-<td align="center">下一行</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + u</code></td>
-<td align="center">上半页（up）</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + d</code></td>
-<td align="center">下半页（down）</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + b</code></td>
-<td align="center">上一页（back）</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + f</code></td>
-<td align="center">下一页（forward）</td>
-</tr>
-<tr>
-<td align="center"><code>H</code></td>
-<td align="center">视口开头（Head）</td>
-</tr>
-<tr>
-<td align="center"><code>M</code></td>
-<td align="center">视口中央（Middle）</td>
-</tr>
-<tr>
-<td align="center"><code>L</code></td>
-<td align="center">视口结尾（Last）</td>
-</tr>
-<tr>
-<td align="center"><code>G（]]）</code></td>
-<td align="center">文件结尾</td>
-</tr>
-<tr>
-<td align="center"><code>gg（[[）</code></td>
-<td align="center">文件开头</td>
-</tr>
-<tr>
-<td align="center"><code>x + G</code></td>
-<td align="center">第 x 行</td>
-</tr>
-</tbody></table>
-<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><table>
-<thead>
-<tr>
-<th align="center">Key</th>
-<th align="center">Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>$</code></td>
-<td align="center">行尾</td>
-</tr>
-<tr>
-<td align="center"><code>^</code></td>
-<td align="center">行首</td>
-</tr>
-<tr>
-<td align="center"><code>0</code></td>
-<td align="center">行最开头</td>
-</tr>
-<tr>
-<td align="center"><code>w</code></td>
-<td align="center">下一个单词的头部（word）</td>
-</tr>
-<tr>
-<td align="center"><code>e</code></td>
-<td align="center">下一个单词的尾部（end）</td>
-</tr>
-<tr>
-<td align="center"><code>b</code></td>
-<td align="center">上一个单词头部</td>
-</tr>
-<tr>
-<td align="center"><code>ge</code></td>
-<td align="center">上一个单词尾部</td>
-</tr>
-<tr>
-<td align="center"><code>f + x</code></td>
-<td align="center">当前行向后查找字符 x（选择 x）</td>
-</tr>
-<tr>
-<td align="center"><code>3 + f + x</code></td>
-<td align="center">当前行向后查找第三个字符 x</td>
-</tr>
-<tr>
-<td align="center"><code>F + x</code></td>
-<td align="center">当前行向前查找字符 x</td>
-</tr>
-<tr>
-<td align="center"><code>t + x</code></td>
-<td align="center">当前行向后查找字符 x（选择 x 前一个字符）</td>
-</tr>
-<tr>
-<td align="center"><code>T + x</code></td>
-<td align="center">当前行向前查找字符 x（选择 x 后一个字符）</td>
-</tr>
-<tr>
-<td align="center"><code>（/）</code></td>
-<td align="center">当前句子的首&#x2F;尾</td>
-</tr>
-<tr>
-<td align="center"><code>&#123;/&#125;</code></td>
-<td align="center">上&#x2F;下一个空行</td>
-</tr>
-<tr>
-<td align="center"><code>%</code></td>
-<td align="center">配对的括号</td>
-</tr>
-<tr>
-<td align="center"><code>*</code></td>
-<td align="center">跳转到与当前光标下单词匹配的下一个单词</td>
-</tr>
-<tr>
-<td align="center"><code>#</code></td>
-<td align="center">跳转到与当前光标下单词匹配的上一个单词</td>
-</tr>
-<tr>
-<td align="center"><code>g + t</code></td>
-<td align="center">下一个标签页</td>
-</tr>
-<tr>
-<td align="center"><code>g + T</code></td>
-<td align="center">上一个标签页</td>
-</tr>
-<tr>
-<td align="center"><code>x + g + t</code></td>
-<td align="center">第 x 个标签页</td>
-</tr>
-</tbody></table>
-<h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h2><blockquote>
-<p>一般而言数字加对应操作即将该操作重复多少次。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">Key</th>
-<th align="center">Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>v</code></td>
-<td align="center">选择</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + v</code></td>
-<td align="center">块状选择</td>
-</tr>
-<tr>
-<td align="center"><code>shift + v</code></td>
-<td align="center">行块选择</td>
-</tr>
-<tr>
-<td align="center"><code>y</code></td>
-<td align="center">复制</td>
-</tr>
-<tr>
-<td align="center"><code>yy（Y）</code></td>
-<td align="center">复制当前行</td>
-</tr>
-<tr>
-<td align="center"><code>p</code></td>
-<td align="center">粘贴（paste）到前面</td>
-</tr>
-<tr>
-<td align="center"><code>P</code></td>
-<td align="center">粘贴到后面</td>
-</tr>
-<tr>
-<td align="center"><code>x</code></td>
-<td align="center">删除（Backspace）</td>
-</tr>
-<tr>
-<td align="center"><code>X</code></td>
-<td align="center">删除（Delete）</td>
-</tr>
-<tr>
-<td align="center"><code>&quot;_x</code></td>
-<td align="center">删除，切不放入缓冲区</td>
-</tr>
-<tr>
-<td align="center"><code>d + w</code></td>
-<td align="center">删除当前词</td>
-</tr>
-<tr>
-<td align="center"><code>d + 3 + w</code></td>
-<td align="center">删除当前三个词</td>
-</tr>
-<tr>
-<td align="center"><code>d + f + x</code></td>
-<td align="center">删到当前行的 x 处（包括 x）</td>
-</tr>
-<tr>
-<td align="center"><code>dd</code></td>
-<td align="center">删除当前行</td>
-</tr>
-<tr>
-<td align="center"><code>d + t + x</code></td>
-<td align="center">删到当前行的 x 前一个字符处（不包括 x）</td>
-</tr>
-<tr>
-<td align="center"><code>u</code></td>
-<td align="center">撤销（undo）</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl + r</code></td>
-<td align="center">重做</td>
-</tr>
-<tr>
-<td align="center"><code>J</code></td>
-<td align="center">合并当前行及下一行</td>
-</tr>
-</tbody></table>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
-<p>按下后进入输入模式。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">Key</th>
-<th align="center">Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>i</code></td>
-<td align="center">选择字符的前一位（insert）</td>
-</tr>
-<tr>
-<td align="center"><code>I</code></td>
-<td align="center">行首</td>
-</tr>
-<tr>
-<td align="center"><code>a</code></td>
-<td align="center">选择字符的后一位（append）</td>
-</tr>
-<tr>
-<td align="center"><code>A</code></td>
-<td align="center">行尾</td>
-</tr>
-<tr>
-<td align="center"><code>o</code></td>
-<td align="center">向下新建一行</td>
-</tr>
-<tr>
-<td align="center"><code>O</code></td>
-<td align="center">向上新建一行</td>
-</tr>
-<tr>
-<td align="center"><code>s</code></td>
-<td align="center">删除所选</td>
-</tr>
-<tr>
-<td align="center"><code>S</code></td>
-<td align="center">删除当前行</td>
-</tr>
-<tr>
-<td align="center"><code>c + 2 + l</code></td>
-<td align="center">删除右边的两个字符</td>
-</tr>
-<tr>
-<td align="center"><code>c + w</code></td>
-<td align="center">删除当前词的光标及其右部分</td>
-</tr>
-</tbody></table>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><table>
-<thead>
-<tr>
-<th align="center">Key</th>
-<th align="center">Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>:q</code></td>
-<td align="center">退出</td>
-</tr>
-<tr>
-<td align="center"><code>:w</code></td>
-<td align="center">保存</td>
-</tr>
-<tr>
-<td align="center"><code>:wq</code></td>
-<td align="center">保存并退出</td>
-</tr>
-<tr>
-<td align="center"><code>/ + str</code></td>
-<td align="center">从当前位置向后搜索字符串 str</td>
-</tr>
-<tr>
-<td align="center"><code>? + str</code></td>
-<td align="center">从当前位置向前搜索字符串 str</td>
-</tr>
-<tr>
-<td align="center"><code>n</code></td>
-<td align="center">下一个</td>
-</tr>
-<tr>
-<td align="center"><code>N</code></td>
-<td align="center">上一个</td>
-</tr>
-<tr>
-<td align="center"><code>:s/str1/str2/g</code>（<code>/</code> 分割或者 <code>#</code> 分割）</td>
-<td align="center">当前行的所有 str1 替换为 str2</td>
-</tr>
-<tr>
-<td align="center"><code>:%s/str1/str2/g</code></td>
-<td align="center">文件中所有的 str1 替换为 str2</td>
-</tr>
-<tr>
-<td align="center"><code>:10,20s/str1/str2/g</code></td>
-<td align="center">10 到 20 行所有的 str1 替换为 str2</td>
-</tr>
-<tr>
-<td align="center"><code>:.,+10s/str1/str2/g</code></td>
-<td align="center">当前行与接下来 10 行 所有的 str1 替换为 str2</td>
-</tr>
-<tr>
-<td align="center"><code>.</code></td>
-<td align="center">重复上一个操作</td>
-</tr>
-<tr>
-<td align="center"><code>~</code></td>
-<td align="center">切换所选字母的大小写</td>
-</tr>
-</tbody></table>
-<p>替换的 <code>/g</code> 为<strong>替换标志</strong>，代表所有（global），可以为空，那么就是从光标开始的第一次出现。<code>/i</code> 表示不区分大小写，<code>/I</code> 表示区分大小写。<code>/c</code> 表示需要确认。这些可以自由组合，比如 <code>/gci</code>。</p>
-<h2 id="一图总结"><a href="#一图总结" class="headerlink" title="一图总结"></a>一图总结</h2><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202405181708942.webp"
-                      alt="|600"
-                ></p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>用 Vim 写 Markdown 并且还是中文其实真的很鸡肋。</p>
-<p>中英输入法不断切换才能正常使用命令。</p>
-<p>总结了一些我初学 Vim 常用的命令。</p>
-<p>纸上得来终觉浅，绝知此事要躬行。</p>
-<p>看不懂的地方就试试，很好理解。</p>
-<p>希望对你有帮助。</p>
-<p>🔚</p>
-]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>vim</tag>
       </tags>
   </entry>
   <entry>
@@ -2683,6 +2347,399 @@ title P
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim Note</title>
+    <url>/d32595a8.html</url>
+    <content><![CDATA[
+  <div class="note p-4 mb-4 rounded-small info">
+    <p>本文使用 Obsidian 的 Vim 模式写作。</p>
+
+  </div>
+
+<h2 id="什么是-Vim"><a href="#什么是-Vim" class="headerlink" title="什么是 Vim"></a>什么是 Vim</h2><blockquote>
+<p>Vim是一个类似于<a class="link"   href="https://baike.baidu.com/item/Vi/5043202?fromModule=lemma_inlink" >Vi<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>的高度可定制的<a class="link"   href="https://baike.baidu.com/item/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/8853160?fromModule=lemma_inlink" >文本编辑器<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，在Vi的基础上改进和增加了很多特性。Vim是<a class="link"   href="https://baike.baidu.com/item/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6/405190?fromModule=lemma_inlink" >自由软件<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。Vim普遍被推崇为类Vi编辑器中最好的一个，事实上真正的劲敌来自Emacs的不同变体。1999 年<a class="link"   href="https://baike.baidu.com/item/Emacs/0?fromModule=lemma_inlink" >Emacs<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>被选为Linuxworld文本编辑分类的优胜者，Vim屈居第二。但在2000年2月Vim赢得了<a class="link"   href="https://baike.baidu.com/item/Slashdot/1329225?fromModule=lemma_inlink" >Slashdot<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> Beanie的最佳<a class="link"   href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81/114160?fromModule=lemma_inlink" >开放源代码<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>文本编辑器大奖，又将Emacs推至二线。</p>
+</blockquote>
+<p>最近在学 Linux，不可避免地需要使用 Vim 进行一些代码编辑（Linux 系统自带的文本编辑器）。</p>
+<p>感叹一下创造 Vim 的人的智慧。</p>
+<p>鼠标是什么东西，我不知道。</p>
+<p>码字效率++</p>
+<p><a class="link"   href="https://vim.nauxscript.com/" >一个比较不错的教程文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="界面-移动"><a href="#界面-移动" class="headerlink" title="界面&#x2F;移动"></a>界面&#x2F;移动</h2><table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>h</code></td>
+<td align="center">Left</td>
+</tr>
+<tr>
+<td align="center"><code>j</code></td>
+<td align="center">Down</td>
+</tr>
+<tr>
+<td align="center"><code>k</code></td>
+<td align="center">UP</td>
+</tr>
+<tr>
+<td align="center"><code>l</code></td>
+<td align="center">Right</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + y</code></td>
+<td align="center">上一行</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + e</code></td>
+<td align="center">下一行</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + u</code></td>
+<td align="center">上半页（up）</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + d</code></td>
+<td align="center">下半页（down）</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + b</code></td>
+<td align="center">上一页（back）</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + f</code></td>
+<td align="center">下一页（forward）</td>
+</tr>
+<tr>
+<td align="center"><code>H</code></td>
+<td align="center">视口开头（Head）</td>
+</tr>
+<tr>
+<td align="center"><code>M</code></td>
+<td align="center">视口中央（Middle）</td>
+</tr>
+<tr>
+<td align="center"><code>L</code></td>
+<td align="center">视口结尾（Last）</td>
+</tr>
+<tr>
+<td align="center"><code>G（]]）</code></td>
+<td align="center">文件结尾</td>
+</tr>
+<tr>
+<td align="center"><code>gg（[[）</code></td>
+<td align="center">文件开头</td>
+</tr>
+<tr>
+<td align="center"><code>x + G</code></td>
+<td align="center">第 x 行</td>
+</tr>
+</tbody></table>
+<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>$</code></td>
+<td align="center">行尾</td>
+</tr>
+<tr>
+<td align="center"><code>^</code></td>
+<td align="center">行首</td>
+</tr>
+<tr>
+<td align="center"><code>0</code></td>
+<td align="center">行最开头</td>
+</tr>
+<tr>
+<td align="center"><code>w</code></td>
+<td align="center">下一个单词的头部（word）</td>
+</tr>
+<tr>
+<td align="center"><code>e</code></td>
+<td align="center">下一个单词的尾部（end）</td>
+</tr>
+<tr>
+<td align="center"><code>b</code></td>
+<td align="center">上一个单词头部</td>
+</tr>
+<tr>
+<td align="center"><code>ge</code></td>
+<td align="center">上一个单词尾部</td>
+</tr>
+<tr>
+<td align="center"><code>f + x</code></td>
+<td align="center">当前行向后查找字符 x（选择 x）</td>
+</tr>
+<tr>
+<td align="center"><code>3 + f + x</code></td>
+<td align="center">当前行向后查找第三个字符 x</td>
+</tr>
+<tr>
+<td align="center"><code>F + x</code></td>
+<td align="center">当前行向前查找字符 x</td>
+</tr>
+<tr>
+<td align="center"><code>t + x</code></td>
+<td align="center">当前行向后查找字符 x（选择 x 前一个字符）</td>
+</tr>
+<tr>
+<td align="center"><code>T + x</code></td>
+<td align="center">当前行向前查找字符 x（选择 x 后一个字符）</td>
+</tr>
+<tr>
+<td align="center"><code>（/）</code></td>
+<td align="center">当前句子的首&#x2F;尾</td>
+</tr>
+<tr>
+<td align="center"><code>&#123;/&#125;</code></td>
+<td align="center">上&#x2F;下一个空行</td>
+</tr>
+<tr>
+<td align="center"><code>%</code></td>
+<td align="center">配对的括号</td>
+</tr>
+<tr>
+<td align="center"><code>*</code></td>
+<td align="center">跳转到与当前光标下单词匹配的下一个单词</td>
+</tr>
+<tr>
+<td align="center"><code>#</code></td>
+<td align="center">跳转到与当前光标下单词匹配的上一个单词</td>
+</tr>
+<tr>
+<td align="center"><code>g + t</code></td>
+<td align="center">下一个标签页</td>
+</tr>
+<tr>
+<td align="center"><code>g + T</code></td>
+<td align="center">上一个标签页</td>
+</tr>
+<tr>
+<td align="center"><code>x + g + t</code></td>
+<td align="center">第 x 个标签页</td>
+</tr>
+</tbody></table>
+<h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h2><blockquote>
+<p>一般而言数字加对应操作即将该操作重复多少次。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>v</code></td>
+<td align="center">选择</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + v</code></td>
+<td align="center">块状选择</td>
+</tr>
+<tr>
+<td align="center"><code>shift + v</code></td>
+<td align="center">行块选择</td>
+</tr>
+<tr>
+<td align="center"><code>y</code></td>
+<td align="center">复制</td>
+</tr>
+<tr>
+<td align="center"><code>yy（Y）</code></td>
+<td align="center">复制当前行</td>
+</tr>
+<tr>
+<td align="center"><code>p</code></td>
+<td align="center">粘贴（paste）到前面</td>
+</tr>
+<tr>
+<td align="center"><code>P</code></td>
+<td align="center">粘贴到后面</td>
+</tr>
+<tr>
+<td align="center"><code>x</code></td>
+<td align="center">删除（Backspace）</td>
+</tr>
+<tr>
+<td align="center"><code>X</code></td>
+<td align="center">删除（Delete）</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;_x</code></td>
+<td align="center">删除，切不放入缓冲区</td>
+</tr>
+<tr>
+<td align="center"><code>d + w</code></td>
+<td align="center">删除当前词</td>
+</tr>
+<tr>
+<td align="center"><code>d + 3 + w</code></td>
+<td align="center">删除当前三个词</td>
+</tr>
+<tr>
+<td align="center"><code>d + f + x</code></td>
+<td align="center">删到当前行的 x 处（包括 x）</td>
+</tr>
+<tr>
+<td align="center"><code>dd</code></td>
+<td align="center">删除当前行</td>
+</tr>
+<tr>
+<td align="center"><code>d + t + x</code></td>
+<td align="center">删到当前行的 x 前一个字符处（不包括 x）</td>
+</tr>
+<tr>
+<td align="center"><code>u</code></td>
+<td align="center">撤销（undo）</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + r</code></td>
+<td align="center">重做</td>
+</tr>
+<tr>
+<td align="center"><code>J</code></td>
+<td align="center">合并当前行及下一行</td>
+</tr>
+</tbody></table>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
+<p>按下后进入输入模式。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>i</code></td>
+<td align="center">选择字符的前一位（insert）</td>
+</tr>
+<tr>
+<td align="center"><code>I</code></td>
+<td align="center">行首</td>
+</tr>
+<tr>
+<td align="center"><code>a</code></td>
+<td align="center">选择字符的后一位（append）</td>
+</tr>
+<tr>
+<td align="center"><code>A</code></td>
+<td align="center">行尾</td>
+</tr>
+<tr>
+<td align="center"><code>o</code></td>
+<td align="center">向下新建一行</td>
+</tr>
+<tr>
+<td align="center"><code>O</code></td>
+<td align="center">向上新建一行</td>
+</tr>
+<tr>
+<td align="center"><code>s</code></td>
+<td align="center">删除所选</td>
+</tr>
+<tr>
+<td align="center"><code>S</code></td>
+<td align="center">删除当前行</td>
+</tr>
+<tr>
+<td align="center"><code>c + 2 + l</code></td>
+<td align="center">删除右边的两个字符</td>
+</tr>
+<tr>
+<td align="center"><code>c + w</code></td>
+<td align="center">删除当前词的光标及其右部分</td>
+</tr>
+</tbody></table>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>:q</code></td>
+<td align="center">退出</td>
+</tr>
+<tr>
+<td align="center"><code>:w</code></td>
+<td align="center">保存</td>
+</tr>
+<tr>
+<td align="center"><code>:wq</code></td>
+<td align="center">保存并退出</td>
+</tr>
+<tr>
+<td align="center"><code>/ + str</code></td>
+<td align="center">从当前位置向后搜索字符串 str</td>
+</tr>
+<tr>
+<td align="center"><code>? + str</code></td>
+<td align="center">从当前位置向前搜索字符串 str</td>
+</tr>
+<tr>
+<td align="center"><code>n</code></td>
+<td align="center">下一个</td>
+</tr>
+<tr>
+<td align="center"><code>N</code></td>
+<td align="center">上一个</td>
+</tr>
+<tr>
+<td align="center"><code>:s/str1/str2/g</code>（<code>/</code> 分割或者 <code>#</code> 分割）</td>
+<td align="center">当前行的所有 str1 替换为 str2</td>
+</tr>
+<tr>
+<td align="center"><code>:%s/str1/str2/g</code></td>
+<td align="center">文件中所有的 str1 替换为 str2</td>
+</tr>
+<tr>
+<td align="center"><code>:10,20s/str1/str2/g</code></td>
+<td align="center">10 到 20 行所有的 str1 替换为 str2</td>
+</tr>
+<tr>
+<td align="center"><code>:.,+10s/str1/str2/g</code></td>
+<td align="center">当前行与接下来 10 行 所有的 str1 替换为 str2</td>
+</tr>
+<tr>
+<td align="center"><code>.</code></td>
+<td align="center">重复上一个操作</td>
+</tr>
+<tr>
+<td align="center"><code>~</code></td>
+<td align="center">切换所选字母的大小写</td>
+</tr>
+</tbody></table>
+<p>替换的 <code>/g</code> 为<strong>替换标志</strong>，代表所有（global），可以为空，那么就是从光标开始的第一次出现。<code>/i</code> 表示不区分大小写，<code>/I</code> 表示区分大小写。<code>/c</code> 表示需要确认。这些可以自由组合，比如 <code>/gci</code>。</p>
+<h2 id="一图总结"><a href="#一图总结" class="headerlink" title="一图总结"></a>一图总结</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://falling-sakura1-1316699389.cos.ap-nanjing.myqcloud.com/image/202405181708942.webp"
+                      alt="|600"
+                ></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>用 Vim 写 Markdown 并且还是中文其实真的很鸡肋。</p>
+<p>中英输入法不断切换才能正常使用命令。</p>
+<p>总结了一些我初学 Vim 常用的命令。</p>
+<p>纸上得来终觉浅，绝知此事要躬行。</p>
+<p>看不懂的地方就试试，很好理解。</p>
+<p>希望对你有帮助。</p>
+<p>🔚</p>
+]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
       </tags>
   </entry>
 </search>
