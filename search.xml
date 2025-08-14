@@ -616,7 +616,7 @@
     <title>ChatGPT：开启个人成长的新纪元</title>
     <url>/5a99080f.html</url>
     <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small pink icon-padding">
+  <div class="note p-4 mb-4 rounded-small markdown-body pink icon-padding">
     <i class="note-icon fa-solid fa-lightbulb"></i><p>本文标题及封面均使用 ChatGPT 生成。</p>
 
   </div>
@@ -1121,10 +1121,10 @@ title P
 
   <div class="note-large 信息">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>信息</p>
+      <p>Note</p>
 
     </div>
-    <div class="notel-content">
+    <div class="notel-content markdown-body">
       <p>换行测试<br>换行测试<br>换行测试</p>
 
     </div>
@@ -1140,7 +1140,7 @@ title P
       <i class="notel-icon fa-solid fa-info"></i><p>信息</p>
 
     </div>
-    <div class="notel-content">
+    <div class="notel-content markdown-body">
       <p>换行测试<br>换行测试<br>换行测试</p>
 
     </div>
@@ -1151,7 +1151,7 @@ title P
       <p>提示</p>
 
     </div>
-    <div class="notel-content">
+    <div class="notel-content markdown-body">
       <p>换行测试<br>换行测试<br>换行测试</p>
 
     </div>
@@ -1162,64 +1162,78 @@ title P
       <p>自定义标题</p>
 
     </div>
-    <div class="notel-content">
+    <div class="notel-content markdown-body">
       <p>换行测试<br>换行测试<br>换行测试</p>
 
     </div>
   </div>
 
 
-  <div class="note p-4 mb-4 rounded-small default">
+  <div class="note p-4 mb-4 rounded-small markdown-body default">
     <p>默认 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small default">
+  <div class="note p-4 mb-4 rounded-small markdown-body default">
     <p>default 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small primary">
+  <div class="note p-4 mb-4 rounded-small markdown-body primary">
     <p>primary 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small success">
+  <div class="note p-4 mb-4 rounded-small markdown-body success">
     <p>success 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small info">
+  <div class="note p-4 mb-4 rounded-small markdown-body info">
     <p>info 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small warning">
+  <div class="note p-4 mb-4 rounded-small markdown-body warning">
     <p>warning 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small danger">
+  <div class="note p-4 mb-4 rounded-small markdown-body danger">
     <p>danger 提示块标签</p>
 
   </div>
 
-  <div class="note p-4 mb-4 rounded-small red icon-padding">
+  <div class="note p-4 mb-4 rounded-small markdown-body red icon-padding">
     <i class="note-icon fa-solid fa-bolt"></i><p>自定义提示块标签</p>
 
   </div>
 
-<details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Folding 测试： 点击查看更多 </summary>
-              <div class='content'>
-              <p>啊啊啊啊啊</p>  <div class="note p-4 mb-4 rounded-small danger">    <p>danger 提示块标签</p>  </div>   <div class="note p-4 mb-4 rounded-small tip">    <p>tip 提示块标签</p>  </div> 
-              </div>
-            </details>
+<details class="blue" data-header-exclude>
+    <summary><i class="fa-solid fa-chevron-right"></i>Folding 测试： 点击查看更多 </summary>
+    <div class='content markdown-body'>
+      <p>啊啊啊啊啊</p>
+  <div class="note p-4 mb-4 rounded-small markdown-body danger">
+    <p>danger 提示块标签</p>
 
-<details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>title </summary>
-              <div class='content'>
-              <p>Yes.</p>
-              </div>
-            </details>
+  </div>
+ 
+
+  <div class="note p-4 mb-4 rounded-small markdown-body tip">
+    <p>tip 提示块标签</p>
+
+  </div>
+ 
+    </div>
+  </details>
+
+<details class="red" data-header-exclude>
+    <summary><i class="fa-solid fa-chevron-right"></i>title </summary>
+    <div class='content markdown-body'>
+      <p>Yes.</p>
+
+    </div>
+  </details>
 
 <div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">First Tab</a></li><li class="tab"><a class="#first-unique-name-2">Second Tab</a></li><li class="tab"><a class="#first-unique-name-3">Third Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>This is Tab 1.</strong></p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>This is Tab 2.</strong></p>
 <p>This is Tab 2.</p></div><div class="tab-pane" id="first-unique-name-3"><p><strong>This is Tab 3.</strong></p>
@@ -1228,10 +1242,10 @@ title P
 
 <p>不设置任何参数的 <a class="button " href='/' title='按钮'>按钮</a> 适合融入段落中。</p>
 <p>regular 按钮适合独立于段落之外：</p>
-<a class="button  regular" href='https://www.ohevan.com' title='示例博客'><i class='fa-solid fa-play-circle'></i> 示例博客</a>
-<a class="button  regular" href='https://www.ohevan.com' title='示例博客'><i class='fa-solid fa-play-circle'></i> 示例博客</a>
+<a class="button regular" href='https://www.ohevan.com' title='示例博客'><i class='fa-solid fa-play-circle'></i> 示例博客</a>
+<a class="button regular" href='https://www.ohevan.com' title='示例博客'><i class='fa-solid fa-play-circle'></i> 示例博客</a>
 <p>large 按钮更具有强调作用，建议搭配 center 使用：</p>
-<a class="button  center large" href='https://redefine-docs.ohevan.com' title='开始使用'><i class='fa-solid fa-download'></i> 开始使用</a>
+<a class="button center large" href='https://redefine-docs.ohevan.com' title='开始使用'><i class='fa-solid fa-download'></i> 开始使用</a>
 
 ]]></content>
       <categories>
@@ -1347,7 +1361,7 @@ title P
     <title>JavaScript Note</title>
     <url>/fbbf86b6.html</url>
     <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small warning icon-padding">
+  <div class="note p-4 mb-4 rounded-small markdown-body warning icon-padding">
     <i class="note-icon fa-solid fa-hand-point-right"></i><p>本 <strong>Note</strong> 记录学习过程中遇到的一些问题，学到哪里便记到哪里，<strong>不适合作为系统学习的参考</strong>，持续更新。</p>
 
   </div>
@@ -2133,7 +2147,7 @@ title P
     <title>Vim Note</title>
     <url>/d32595a8.html</url>
     <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small info">
+  <div class="note p-4 mb-4 rounded-small markdown-body info">
     <p>本文使用 Obsidian 的 Vim 模式写作。</p>
 
   </div>
